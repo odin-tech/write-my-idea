@@ -23,6 +23,7 @@ h1 {
 button {
 	font-family: inherit;
 	border: none;
+	transition-duration: 0.3s;
 }
 
 .filllarge {
@@ -33,7 +34,7 @@ button {
 .fillleft {
 	float: left;
 	height: 100vh;
-	width: 50vw;
+	width: 50%;
 	margin: 0;
 	padding: 0;
 }
@@ -41,7 +42,7 @@ button {
 .fillright {
 	float: right;
 	height: 100vh;
-	width: 50vw;
+	width: 50%;
 	margin: 0;
 	padding: 0;
 }
@@ -107,31 +108,137 @@ button {
 	height: 50px;
 	font-size: 35px;
 	font-family: "Farsan";
-	border: solid 1px #b1b1b1;
+	border: solid 1px #959595;
 	border-radius: 20px 20px 0px 0px;
+}
+
+#ideabox::placeholder {
+	color: grey;
 }
 
 #progcontainer {
 	width: 80vw;
 	padding: 1px;
-	border: solid 1px #b1b1b1;
-	height: 15px;
+	border: solid 1px #959595;
+	height: 20px;
 	border-radius: 0px 0px 20px 20px;
 	border-top: none;
 	display: inline-block;
 	margin-top: -2px;
 	overflow: hidden;
-	text-align: left;
+	background-color: #b7b7b7;
 }
 
 #progbar {
 	background-color: #009b00;
-	width: 100%;
+	padding-left: 1px;
 	height: 120%;
+	transition-duration: 0.3s;
+}
+
+.progfill0 {
+	width: 0%;
+	transition-duration: 0.3s;
+}
+
+.progfill1 {
+	width: 20%;
+	transition-duration: 0.3s;
+}
+
+.progfill2 {
+	width: 40%;
+	transition-duration: 0.3s;
+}
+
+.progfill3 {
+	width: 60%;
+	transition-duration: 0.3s;
+}
+
+.progfill4 {
+	width: 80%;
+	transition-duration: 0.3s;
+}
+
+.progfill5 {
+	width: 100%;
+	transition-duration: 0.3s;
 }
 
 #ideacontainer {
 	width: 100vw;
 	text-align: center;
 	padding-top: 60px;
+}
+
+.bold {
+	font-weight: bold;
+}
+
+#progtext {
+	position: absolute;
+	left: 0;
+	right: 0;
+	margin: 0;
+	color: white;
+}
+
+.sidebtn {
+	font-size: 30px;
+	background-color: transparent;
+}
+
+button:disabled {
+	color: #c6c6c6;
+	background-color: transparent;
+}
+
+#clear {
+	position: relative;
+	top: -65px;
+	left: 91vw;
+}
+
+#clear:not(:disabled) {
+	color: #ff5959;
+}
+
+#clear:disabled {
+	transform: scale(0.75);
+}
+
+#inputhelp {
+	position: relative;
+	top: -65px;
+	right: 10px;
+	color: #00a1f7;
+}
+
+#helpbox {
+	border: solid 1px #0080ff;
+	color: #0080ff;
+	border-radius: 10px;
+	margin: 20px;
+	overflow: hidden;
+	position: fixed;
+	top: 100px;
+	width: 88vw;
+	padding: 5px;
+	margin-left: 90px;
+	background-color: #ebf5ff;
+	transition-duration: 0.3s;
+}
+
+#helpbox h2 {
+	margin-top: 2px;
+}
+
+#helpbox p {
+	margin: 0;
+}
+
+.hide {
+	transition-duration: 0.3s;
+	left: 120vw;
 }

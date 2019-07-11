@@ -6,20 +6,37 @@
 	<link type="text/css" rel='stylesheet' href='style.css'>
 	<link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Farsan&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/75a0d01447.js"></script>
+	<script src="newstory.js"></script>
 	<title>New - Write My Idea!</title>
 </head>
 
 <body>
 	<div class="navbar">
-		<button id="cancel" class="navitem danger navleft">CANCEL</button>
+		<button id="cancel" onclick="confirmCancelStory()" class="navitem danger navleft">CANCEL</button>
 		<button id="nextIdea" class="navitem suggest navright">NEXT</button>
 		<button id="prevIdea" class="navitem navright">BACK</button>
+
 	</div>
 	<div class="navbody">
-		<div id="ideacontainer"><input type="text" id="ideabox">
-			<div id="progcontainer">
-				<div id="progbar"></div>
+		<div id="ideacontainer"><input type="text" id="ideabox" placeholder="Ideas go here...">
+			<div id="progcontainer"><span id="progtext">IDEA <span class="bold"><span id="ideanum">1</span>/5</span></span>
+				<div id="progbar" class="progfill0"></div>
 			</div>
+		</div>
+		<button id="clear" onclick="clearInput()" class="sidebtn" disabled><i class="fas fa-backspace"></i></button>
+		<button id="inputhelp" onclick="showHelp()" class="sidebtn"><i class="fas fa-question-circle"></i></button>
+		<div id="helpbox" class="hide">
+			<h2>HELP</h2>
+			<h3>HOW THIS WORKS</h3>
+			<p>Each story has five core Ideas in it. Each Idea should have 3 to 5 words. In the box (using your voice or keyboard - see below), enter an idea and press "Next". Then enter your second idea, and press Next. Repeat this for each of the 5 ideas.</p>
+			<h3>KEYBOARD</h3>
+			<p>Tap in the "Ideas go here..." box, and start typing in your idea using the keyboard that pops up.</p>
+			<h3>VOICE</h3>
+			<p>Tap in the "Ideas go here..." box. On the keyboard that pops up, look for a button with the <i class="fas fa-microphone"></i> icon. Tap it, and start speaking.</p>
+			<br>
+			<br>
+			<em>Tap the help button to dismiss.</em>
+			<br>
 		</div>
 	</div>
 </body>
