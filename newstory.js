@@ -3,7 +3,7 @@ var helpOpen = false;
 function confirmCancelStory() {
 	var leave = confirm("Are you sure you want to cancel? Your story will be deleted!\n\nPress OK to exit. Press Cancel to return to your story.")
 	if (leave == true) {
-		window.location.href = "/index.html";
+		window.location.href = "index.html";
 	} else {
 		//Do nothing!
 	}
