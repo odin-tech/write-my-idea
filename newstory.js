@@ -132,7 +132,7 @@ function saveInput() {
 				localStorage.pushArrayItem(input.value, ideas[i]);
 			}
 			var numDisplay = document.getElementById("progtext");
-			numDisplay.innerHTML = "<i class='fas fa-check'></i> DONE!";
+			numDisplay.innerHTML = "<i class='fas fa-check'></i> DONE! PLEASE WAIT...";
 			setTimeout(function () {
 				window.location.href = "index.html";
 			}, 1000);

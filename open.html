@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset='utf-8'>
+	<link type="text/css" rel='stylesheet' href='style.css'>
+	<link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Farsan&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/75a0d01447.js"></script>
+	<script src="openstory.js"></script>
+	<title>Write My Idea!</title>
+</head>
+
+<body>
+	<div class="navbar">
+		<button id="return" onclick="window.location.href='index.html'" class="navitem navleft"><i class="fas fa-angle-left"></i> BACK</button>
+		<button id="delete" onclick="confirmStoryDelete()" class="navitem navright danger">DELETE <i class="fas fa-trash"></i></button>
+	</div>
+	<div class="navbody open">
+		<h2>SELECT STORY<br><select id="storypick">
+				<option value="">LOADING...</option>
+			</select></h2>
+		<p id="previewstory">Loading...</p>
+		<h2>SELECT ACTIVITY</h2>
+		<button id="startjumble" class="activityselect" disabled><i class="fas fa-puzzle-piece icon-text"></i> JUMBLE</button>
+		<button id="startwrite" class="activityselect" disabled><i class="fas fa-pencil-alt icon-text"></i> WRITE</button>
+		<button id="startdraw" class="activityselect" disabled><i class="fas fa-paint-brush icon-text"></i> DRAW</button>
+		<button id="share" class="activityselect" disabled><i class="fas fa-share-square icon-text"></i> SHARE</button>
+	</div>
+</body></html>

@@ -68,6 +68,7 @@ button {
 	padding: 10px;
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
+	text-align: center;
 }
 
 .navitem {
@@ -190,7 +191,7 @@ button {
 	background-color: transparent;
 }
 
-button:disabled {
+.navitem button:disabled {
 	color: #c6c6c6;
 	background-color: transparent;
 }
@@ -210,9 +211,9 @@ button:disabled {
 }
 
 #inputhelp {
-	position: relative;
-	top: -65px;
-	right: 10px;
+	position: absolute;
+	top: 90vh;
+	left: 0;
 	color: #00a1f7;
 }
 
@@ -226,7 +227,7 @@ button:disabled {
 	top: 100px;
 	width: 88vw;
 	padding: 5px;
-	margin-left: 90px;
+	margin-left: 10vw;
 	background-color: #ebf5ff;
 	transition-duration: 0.3s;
 }
@@ -247,4 +248,56 @@ button:disabled {
 .explicit {
 	background-color: #ffb2b2;
 	color: red;
+}
+
+h2 {
+	text-align: center;
+}
+
+select {
+	padding: 5px 10px;
+	border: solid 1px black;
+	background-color: white;
+	font-family: inherit;
+	border-radius: 10px;
+	width: 25vw;
+	font-size: 15px;
+}
+
+#previewstory {
+	margin-left: 50px;
+	font-size: 18px;
+	margin-right: 50px;
+}
+
+.activityselect {
+	font-size: 20px;
+	padding: 10px 15px;
+	border-radius: 10px;
+	margin: 5px;
+	width: 23.7vw;
+}
+
+.navbody .open {
+	text-align: center;
+}
+
+#startjumble:not(:disabled) {
+	background-color: #de6700;
+	color: white;
+}
+
+#startwrite:not(:disabled) {
+	background-color: #00b70e;
+	color: white;
+}
+
+#startdraw:not(:disabled) {
+	background-color: #00b3de;
+	color: white;
+}
+
+#share:not(:disabled) {
+	background-color: #de006f;
+	color: white;
 }
