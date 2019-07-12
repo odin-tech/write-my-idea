@@ -112,7 +112,7 @@ button {
 	border: solid 1px #959595;
 	border-radius: 20px 20px 0px 0px;
 	transition-duration: 0.3s;
-	padding: 0;
+	padding: 10px;
 	margin: 0;
 }
 
@@ -122,7 +122,7 @@ button {
 
 #progcontainer {
 	width: 80vw;
-	padding: 1px;
+	padding: 1px 10px;
 	border: solid 1px #959595;
 	height: 20px;
 	border-radius: 0px 0px 20px 20px;
@@ -135,8 +135,9 @@ button {
 
 #progbar {
 	background-color: #009b00;
-	padding-left: 1px;
+	margin-left: -10px;
 	height: 120%;
+	padding-right: 20px;
 	transition-duration: 0.3s;
 }
 
