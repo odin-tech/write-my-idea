@@ -160,7 +160,7 @@ function loop() {
 		if (document.getElementById("ideabox").value != "") {
 			document.getElementById("clear").disabled = false;
 			document.getElementById("nextIdea").disabled = false;
-			if (SearchForString(document.getElementById("ideabox").value, banwords) == true) {
+			if (SearchForString(document.getElementById("ideabox").value.toLowerCase(), banwords) == true) {
 				document.getElementById("nextIdea").disabled = true;
 				document.getElementById("ideabox").className = "explicit";
 			} else {

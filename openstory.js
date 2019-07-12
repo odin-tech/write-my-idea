@@ -1,6 +1,8 @@
 var ideaNum = 1;
 var ideas = ["", "", "", "", ""];
 var banwords = ["badword", "wordbad", "bad word", "word bad"];
+var synth = window.speechSynthesis;
+var speechVoice;
 
 // HELPER FUNCTIONS //
 
@@ -75,6 +77,44 @@ function confirmStoryDelete() {
 	}
 }
 
+function speakStory(part) {
+	var pick = document.getElementById("storypick");
+	var selected = localStorage.getArray(pick.value);
+	SpeakText(selected[part]);
+}
+
+function speakAllStory() {
+	var pick = document.getElementById("storypick");
+	var selected = localStorage.getArray(pick.value);
+	for (i in selected) {
+		SpeakText(selected[i]);
+	}
+}
+
+// SPEECH SYNTHESIS (from MDN Web Documentation) //
+
+function PopulateVoiceList() {
+	voices = synth.getVoices();
+
+	for (i = 0; i < voices.length; i++) {
+		var voice = voices[i];
+		if (voice.lang == "EN-US") {
+			speechVoice = voice;
+			break;
+		}
+	}
+}
+
+function SpeakText(input) {
+	var utterThis = new SpeechSynthesisUtterance(input);
+	utterThis.voice = speechVoice;
+	utterThis.pitch = 1;
+	utterThis.rate = 1;
+	synth.speak(utterThis);
+}
+
+// LOOP & SETUP //
+
 function loop() {
 	//Execute once:
 	setTimeout(function () {
@@ -83,11 +123,12 @@ function loop() {
 		for (var i = 0, len = localStorage.length; i < len; i++) { //Load list of stories.
 			pick.innerHTML = pick.innerHTML + "<option value='" + localStorage.key(i) + "'>" + localStorage.key(i) + "</option>";
 		}
+		PopulateVoiceList();
 	}, 500)
 	setInterval(function () {
 		var story = localStorage.getArray(document.getElementById("storypick").value);
 		if (document.getElementById("storypick").value == "") {
-			var preview = "Please select a story above.";
+			var preview = "Please select a story above.<br>";
 		} else {
 			var preview = "";
 			for (i in story) {
@@ -100,11 +141,29 @@ function loop() {
 			document.getElementById("startwrite").disabled = false;
 			document.getElementById("startdraw").disabled = false;
 			document.getElementById("share").disabled = false;
+			document.getElementById("read1").disabled = false;
+			document.getElementById("read2").disabled = false;
+			document.getElementById("read3").disabled = false;
+			document.getElementById("read4").disabled = false;
+			document.getElementById("read5").disabled = false;
+			document.getElementById("readall").disabled = false;
+			document.getElementById("delete").disabled = false;
+			document.getElementById("activityhead").className = "";
+			document.getElementById("readhead").className = "";
 		} else {
 			document.getElementById("startjumble").disabled = true;
 			document.getElementById("startwrite").disabled = true;
 			document.getElementById("startdraw").disabled = true;
 			document.getElementById("share").disabled = true;
+			document.getElementById("read1").disabled = true;
+			document.getElementById("read2").disabled = true;
+			document.getElementById("read3").disabled = true;
+			document.getElementById("read4").disabled = true;
+			document.getElementById("read5").disabled = true;
+			document.getElementById("readall").disabled = true;
+			document.getElementById("delete").disabled = true;
+			document.getElementById("activityhead").className = "notyet";
+			document.getElementById("readhead").className = "notyet";
 		}
 	}, 100);
 }

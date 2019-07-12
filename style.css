@@ -124,7 +124,7 @@ button {
 	width: 80vw;
 	padding: 1px 10px;
 	border: solid 1px #959595;
-	height: 20px;
+	height: 25px;
 	border-radius: 0px 0px 20px 20px;
 	border-top: none;
 	display: inline-block;
@@ -134,11 +134,11 @@ button {
 }
 
 #progbar {
-	background-color: #009b00;
 	margin-left: -10px;
 	height: 120%;
 	padding-right: 20px;
 	transition-duration: 0.3s;
+	background-color: #009b00;
 }
 
 .progfill0 {
@@ -186,6 +186,7 @@ button {
 	left: 0;
 	right: 0;
 	margin: 0;
+	font-size: 20px;
 	color: white;
 }
 
@@ -201,8 +202,8 @@ button {
 
 #clear {
 	position: relative;
-	top: -65px;
-	left: 91vw;
+	top: -75px;
+	left: 93vw;
 }
 
 #clear:not(:disabled) {
@@ -265,7 +266,8 @@ select {
 	font-family: inherit;
 	border-radius: 10px;
 	width: 25vw;
-	font-size: 15px;
+	font-size: 20px;
+	box-shadow: 0px 2px 5px grey;
 }
 
 #previewstory {
@@ -280,6 +282,7 @@ select {
 	border-radius: 10px;
 	margin: 5px;
 	width: 23.7vw;
+	box-shadow: 0px 2px 5px grey;
 }
 
 .navbody .open {
@@ -287,7 +290,7 @@ select {
 }
 
 #startjumble:not(:disabled) {
-	background-color: #de6700;
+	background-color: #f59f00;
 	color: white;
 }
 
@@ -304,4 +307,48 @@ select {
 #share:not(:disabled) {
 	background-color: #de006f;
 	color: white;
+}
+
+.readstory {
+	padding: 10px 15px;
+	border-radius: 10px;
+	width: 16vw;
+	font-size: 20px;
+	margin: 0px 2px 0px 2px;
+	box-shadow: 0px 2px 5px grey;
+}
+
+#read1:not(:disabled) {
+	background-color: #eb0000;
+	color: white;
+}
+
+#read2:not(:disabled) {
+	background-color: #f59f00;
+	color: white;
+}
+
+#read3:not(:disabled) {
+	background-color: #00b70e;
+	color: white;
+}
+
+#read4:not(:disabled) {
+	background-color: #00b3de;
+	color: white;
+}
+
+#read5:not(:disabled) {
+	background-color: #3857ff;
+	color: white;
+}
+
+#readall:not(:disabled) {
+	background-color: #de006f;
+	color: white;
+}
+
+.notyet {
+	color: #959595;
+	transition-duration: 0.3s;
 }

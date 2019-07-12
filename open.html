@@ -16,14 +16,23 @@
 		<button id="delete" onclick="confirmStoryDelete()" class="navitem navright danger">DELETE <i class="fas fa-trash"></i></button>
 	</div>
 	<div class="navbody open">
-		<h2>SELECT STORY<br><select id="storypick">
+		<h2>1 - SELECT STORY<br><select id="storypick">
 				<option value="">LOADING...</option>
 			</select></h2>
 		<p id="previewstory">Loading...</p>
-		<h2>SELECT ACTIVITY</h2>
+		<h2 id="activityhead" class="notyet">2 - SELECT ACTIVITY</h2>
 		<button id="startjumble" class="activityselect" disabled><i class="fas fa-puzzle-piece icon-text"></i> JUMBLE</button>
 		<button id="startwrite" class="activityselect" disabled><i class="fas fa-pencil-alt icon-text"></i> WRITE</button>
 		<button id="startdraw" class="activityselect" disabled><i class="fas fa-paint-brush icon-text"></i> DRAW</button>
 		<button id="share" class="activityselect" disabled><i class="fas fa-share-square icon-text"></i> SHARE</button>
+		<h2 id="readhead" class="notyet">3 - READ STORY</h2>
+		<button id="read1" class="readstory" onclick="speakStory(0)"><i class="fas fa-volume-up fa-fw icon-text"></i> IDEA 1</button>
+		<button id="read2" class="readstory" onclick="speakStory(1)"><i class="fas fa-volume-up fa-fw icon-text"></i> IDEA 2</button>
+		<button id="read3" class="readstory" onclick="speakStory(2)"><i class="fas fa-volume-up fa-fw icon-text"></i> IDEA 3</button>
+		<button id="read4" class="readstory" onclick="speakStory(3)"><i class="fas fa-volume-up fa-fw icon-text"></i> IDEA 4</button>
+		<button id="read5" class="readstory" onclick="speakStory(4)"><i class="fas fa-volume-up fa-fw icon-text"></i> IDEA 5</button>
+		<button id="readall" class="readstory" onclick="speakAllStory()"><i class="fas fa-volume-up fa-fw icon-text"></i> ALL</button>
 	</div>
-</body></html>
+</body>
+
+</html>
