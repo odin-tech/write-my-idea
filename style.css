@@ -191,7 +191,7 @@ button {
 	background-color: transparent;
 }
 
-.navitem button:disabled {
+.navitem:disabled {
 	color: #c6c6c6;
 	background-color: transparent;
 }
