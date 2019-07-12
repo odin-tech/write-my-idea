@@ -13,18 +13,18 @@
 <body>
 	<div class="navbar">
 		<button id="cancel" onclick="confirmCancelStory()" class="navitem danger navleft">CANCEL</button>
-		<button id="nextIdea" class="navitem suggest navright">NEXT</button>
-		<button id="prevIdea" class="navitem navright">BACK</button>
+		<button id="nextIdea" onclick="saveInput()" class="navitem suggest navright">NEXT</button>
+		<button id="prevIdea" onclick="loadInput()" class="navitem navright">BACK</button>
 
 	</div>
 	<div class="navbody">
 		<div id="ideacontainer"><input type="text" id="ideabox" placeholder="Ideas go here...">
-			<div id="progcontainer"><span id="progtext">IDEA <span class="bold"><span id="ideanum">1</span>/5</span></span>
-				<div id="progbar" class="progfill0"></div>
+			<div id="progcontainer"><span id="progtext"><span class="bold">1</span> of 5</span>
+				<div id="progbar" class="progfill1"></div>
 			</div>
 		</div>
 		<button id="clear" onclick="clearInput()" class="sidebtn" disabled><i class="fas fa-backspace"></i></button>
-		<button id="inputhelp" onclick="showHelp()" class="sidebtn"><i class="fas fa-question-circle"></i></button>
+		<button id="inputhelp" onclick="showHelp()" class="sidebtn"><i id="helpicon" class="fas fa-question-circle"></i></button>
 		<div id="helpbox" class="hide">
 			<h2>HELP</h2>
 			<h3>HOW THIS WORKS</h3>
@@ -32,10 +32,11 @@
 			<h3>KEYBOARD</h3>
 			<p>Tap in the "Ideas go here..." box, and start typing in your idea using the keyboard that pops up.</p>
 			<h3>VOICE</h3>
-			<p>Tap in the "Ideas go here..." box. On the keyboard that pops up, look for a button with the <i class="fas fa-microphone"></i> icon. Tap it, and start speaking.</p>
-			<br>
-			<br>
-			<em>Tap the help button to dismiss.</em>
+			<p>Tap in the "Ideas go here..." box. On the keyboard that pops up, look for a button with the <i class="fas fa-microphone"></i> icon. Tap it, and start speaking. Once you're done, tap the <i class="fas fa-microphone"></i> again or <i class="fas fa-keyboard"></i> to stop.</p>
+			<h3>MADE A MISTAKE?</h3>
+			<p>Tap the red <i class="fas fa-backspace"></i> icon next to the box to clear what you said/typed.</p>
+			<h3>WHY IS THE BOX RED?</h3>
+			<p>Uh oh! The box turns red when it detects that you have entered a naughty word. Tap <i class="fas fa-backspace"></i> and try again.</p>
 			<br>
 		</div>
 	</div>

@@ -110,6 +110,7 @@ button {
 	font-family: "Farsan";
 	border: solid 1px #959595;
 	border-radius: 20px 20px 0px 0px;
+	transition-duration: 0.3s;
 }
 
 #ideabox::placeholder {
@@ -241,4 +242,9 @@ button:disabled {
 .hide {
 	transition-duration: 0.3s;
 	left: 120vw;
+}
+
+.explicit {
+	background-color: #ffb2b2;
+	color: red;
 }
