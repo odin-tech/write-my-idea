@@ -69,6 +69,7 @@ button {
 	border-bottom-left-radius: 10px;
 	border-bottom-right-radius: 10px;
 	text-align: center;
+	box-shadow: 0px 2px 5px grey;
 }
 
 .navitem {
@@ -280,7 +281,7 @@ select {
 	font-size: 20px;
 	padding: 10px 15px;
 	border-radius: 10px;
-	margin: 5px;
+	margin: 0px 0.5vw;
 	width: 23.7vw;
 	box-shadow: 0px 2px 5px grey;
 }
@@ -312,9 +313,9 @@ select {
 .readstory {
 	padding: 10px 15px;
 	border-radius: 10px;
-	width: 16vw;
+	width: 13vw;
 	font-size: 20px;
-	margin: 0px 2px 0px 2px;
+	margin: 0px 0.5vw;
 	box-shadow: 0px 2px 5px grey;
 }
 
@@ -348,7 +349,19 @@ select {
 	color: white;
 }
 
+#stopread:not(:disabled) {
+	background-color: #de8900;
+	color: white;
+}
+
 .notyet {
-	color: #959595;
+	color: #c9c9c9;
 	transition-duration: 0.3s;
+}
+
+hr {
+	margin-top: 10px;
+	margin-bottom: 10px;
+	box-shadow: 0px 3px 5px black;
+	border: 1px solid white;
 }
