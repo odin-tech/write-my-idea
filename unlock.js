@@ -1,4 +1,5 @@
 var code = "";
+var alerted = false;
 
 var codelist = [["A55371", "T76723", "F01910", "G85967", "C01839"], ["D84860", "P47214", "L49203", "B52333", "V72535"], ["N91750", "M16788", "Z10483", "X02992", "Q15933"], ["H64260", "K10849", "H35581", "D30622", "E42742"], ["B27957", "U46510", "J31682", "Y03635", "S56103"]];
 
@@ -36,7 +37,7 @@ function requestCodes() {
 }
 
 function checkForAuthorisation() {
-	if (localStorage["auth"] != null) {
+	if (localStorage["auth"] != undefined) {
 		window.location.replace("menu.html");
 	} else {
 		requestCodes();
@@ -51,7 +52,11 @@ function init() {
 			if (document.getElementById("codeentry").value.length == 6) {
 				if (document.getElementById("codeentry").value.toUpperCase() == code) {
 					document.getElementById("codeentry").className = "correct";
-					localStorage.setItem("auth", code)
+					localStorage.setItem("auth", code);
+					if (!alerted) {
+						alert("Device Authorised!\n\nThis device has been successfully authorised. You won't need to enter a code again (unless you clear your browser data).\n\nTo deauthorise this device, tap About on the main menu and tap Remove Key.\n\nTap OK to continue to the menu.");
+						alerted = true;
+					}
 					setTimeout(function () {
 						window.location.replace("menu.html");
 					}, 1000);

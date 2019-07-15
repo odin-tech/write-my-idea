@@ -7,12 +7,21 @@
 	<link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Farsan&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/75a0d01447.js"></script>
 	<title>Write My Idea!</title>
+	<script>
+		if (localStorage["auth"] != undefined) {
+			//do nothing
+		} else {
+			window.location.replace("index.html");
+		}
+
+	</script>
 </head>
 
 <body>
 	<h1 id="title">Write My Idea!</h1>
 	<button id="new" onclick="window.location.href='new.html'" class="fillleft filllarge"><i class="fas fa-plus icon-text"></i> NEW</button>
 	<button id="open" onclick="window.location.href='open.html'" class="fillright filllarge">OPEN <i class="fas fa-folder-open icon-text"></i></button>
+	<button class="aboutbtn" onclick="window.location.href='about.html'">ABOUT <i class="fa fa-info-circle"></i></button>
 </body>
 
 </html>

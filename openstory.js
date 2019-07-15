@@ -213,7 +213,7 @@ function loop() {
 				document.getElementById("activityhead").className = "notyet";
 				document.getElementById("readhead").className = "notyet";
 			}
-			if (localStorage.getItem("auth") != null) {
+			if (localStorage["auth"] != undefined) {
 				//do nothing
 			} else {
 				window.location.replace("index.html");

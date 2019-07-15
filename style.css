@@ -402,7 +402,32 @@ hr {
 .floatingcentre {
 	position: absolute;
 	top: 100px;
-	width: 50vw;left: 0;
+	width: 50vw;
+	left: 0;
 	right: 0;
 	padding-left: 25vw;
+}
+
+.about {
+	text-align: center;
+}
+
+.loginbtn {
+	padding: 5px;
+	font-size: 15px;
+	border-bottom-right-radius: 10px;
+	background-color: white;
+	border: 1px black solid;
+}
+
+.aboutbtn {
+	position: absolute;
+	top: 0;
+	left: 0;
+	padding: 5px;
+	font-size: 22px;
+	border-bottom-right-radius: 10px;
+	background-color: #3fa0ff;
+	border: none;
+	color: white;
 }
