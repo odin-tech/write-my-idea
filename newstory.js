@@ -68,7 +68,7 @@ function SearchForString(str, items) {
 function confirmCancelStory() {
 	var leave = confirm("Are you sure you want to cancel? Your story will be deleted!\n\Tap OK to exit. Tap Cancel to return to your story.")
 	if (leave == true) {
-		window.location.href = "index.html";
+		window.location.href = "menu.html";
 	} else {
 		//Do nothing!
 	}
@@ -134,7 +134,7 @@ function saveInput() {
 			var numDisplay = document.getElementById("progtext");
 			numDisplay.innerHTML = "<i class='fas fa-check'></i> DONE! PLEASE WAIT...";
 			setTimeout(function () {
-				window.location.href = "index.html";
+				window.location.href = "menu.html";
 			}, 1000);
 		}, 1000);
 
@@ -177,7 +177,11 @@ function loop() {
 		} else {
 			document.getElementById("prevIdea").disabled = false;
 		}
-
+		if (localStorage.getItem("auth") != null) {
+			//do nothing
+		} else {
+			window.location.replace("index.html");
+		}
 	}, 100);
 }
 

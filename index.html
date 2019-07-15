@@ -4,15 +4,16 @@
 <head>
 	<meta charset='utf-8'>
 	<link type="text/css" rel='stylesheet' href='style.css'>
-	<link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Farsan&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|PT+Mono&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/75a0d01447.js"></script>
+	<script src="unlock.js"></script>
 	<title>Write My Idea!</title>
 </head>
 
 <body>
-	<h1 id="title">Write My Idea!</h1>
-	<button id="new" onclick="window.location.href='new.html'" class="fillleft filllarge"><i class="fas fa-plus icon-text"></i> NEW</button>
-	<button id="open" onclick="window.location.href='open.html'" class="fillright filllarge">OPEN <i class="fas fa-folder-open icon-text"></i></button>
+	<h1 id="codetitle">Enter Access Code <span class="bold" id="coordtext">- -</span><br><small>to access Write My Idea</small></h1>
+	<h1><input type="text" maxlength="6" class="normal" id="codeentry"></h1>
+	<a href="lost.html"><i class="fa fa-key"></i> LOST YOUR CODESHEET?</a>
 </body>
 
 </html>
