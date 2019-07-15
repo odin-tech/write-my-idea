@@ -154,7 +154,11 @@ function loop() {
 		var pick = document.getElementById("storypick");
 		pick.innerHTML = "<option value=''>CHOOSE...</option>";
 		for (var i = 0, len = localStorage.length; i < len; i++) { //Load list of stories.
-			pick.innerHTML = pick.innerHTML + "<option value='" + localStorage.key(i) + "'>" + localStorage.key(i) + "</option>";
+			if (localStorage.key(i) == "auth") {
+				//skip this one!
+			} else {
+				pick.innerHTML = pick.innerHTML + "<option value='" + localStorage.key(i) + "'>" + localStorage.key(i) + "</option>";
+			}
 		}
 		PopulateVoiceList();
 		setInterval(function () {
