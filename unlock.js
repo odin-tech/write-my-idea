@@ -55,11 +55,11 @@ function init() {
 					localStorage.setItem("auth", code);
 					if (!alerted) {
 						alert("Device Authorised!\n\nThis device has been successfully authorised. You won't need to enter a code again (unless you clear your browser data).\n\nTo deauthorise this device, tap About on the main menu and tap Remove Key.\n\nTap OK to continue to the menu.");
+						setTimeout(function () {
+							window.location.replace("menu.html");
+						}, 1000);
 						alerted = true;
 					}
-					setTimeout(function () {
-						window.location.replace("menu.html");
-					}, 1000);
 				} else {
 					document.getElementById("codeentry").className = "wrong";
 				}
