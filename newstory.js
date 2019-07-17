@@ -1,7 +1,7 @@
 var helpOpen = false;
 var ideaNum = 1;
 var ideas = ["", "", "", "", ""];
-var banwords = ["fuck", "shit", "shat", "crap"];
+var banwords = [""];
 
 // HELPER FUNCTIONS //
 

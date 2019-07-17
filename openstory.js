@@ -137,7 +137,7 @@ function startdraw() {
 
 function startshare() {
 	var pick = document.getElementById("storypick");
-	var share = window.open("activity.html");
+	var share = window.open();
 	share.document.write("<h1>" + pick.value + "</h1>");
 	share.document.write("<em>Screenshot or print this page!</em>");
 	var story = localStorage.getArray(pick.value);
