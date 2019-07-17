@@ -279,7 +279,7 @@ select {
 
 .activityselect {
 	font-size: 20px;
-	padding: 10px 15px;
+	padding: 15px 20px;
 	border-radius: 10px;
 	margin: 0px 0.5vw;
 	width: 23.7vw;
@@ -311,7 +311,7 @@ select {
 }
 
 .readstory {
-	padding: 10px 15px;
+	padding: 15px 20px;
 	border-radius: 10px;
 	width: 13vw;
 	font-size: 20px;
