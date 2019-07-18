@@ -6,27 +6,12 @@
 	<link type="text/css" rel='stylesheet' href='style.css'>
 	<link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Farsan&display=swap" rel="stylesheet">
 	<script src="https://kit.fontawesome.com/75a0d01447.js"></script>
-	<script>
-		function deauthDevice() {
-			if (confirm("Are you sure you want to deauthorise this device? You will need to enter a key to unlock Write My Idea again!\n\n Tap OK to deauthorise. Tap Cancel to go back.") == true) {
-				localStorage.removeItem("auth");
-				document.getElementById("removekey").innerHTML = "REMOVING... <i class='fa fa-spinner fa-pulse'></i>";
-				document.getElementById("removekey").disabled = true;
-				setTimeout(function() {
-					window.location.replace("index.html");
-				}, 1000);
-			} else {
-				//Do nothing
-			}
-		}
-	</script>
 	<title>New - Write My Idea!</title>
 </head>
 
 <body>
 	<div class="navbar">
 		<button id="cancel" onclick="window.location.href='menu.html'" class="navitem navleft"><i class="fas fa-arrow-left"></i> BACK</button>
-		<button id="removekey" onclick="deauthDevice()" class="navitem danger navright">REMOVE KEY <i class="fas fa-user-times"></i></button>
 
 	</div>
 	<div class="navbody about">

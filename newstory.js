@@ -114,12 +114,27 @@ function saveInput() {
 		var idea = document.getElementById("ideabox");
 		ideas[ideaNum - 1] = idea.value;
 		idea.value = "";
+		idea.placeholder = "Your Name...";
 		ideaNum = 10;
+		var numDisplay = document.getElementById("progtext");
+		numDisplay.innerHTML = "ENTER AUTHOR NAME";
+		var cancel = document.getElementById("cancel");
+		cancel.disabled = true;
+		var progress = document.getElementById("progbar");
+		progress.className = "progfill" + ideaNum;
+	} else if (ideaNum == 10) {
+		var idea = document.getElementById("ideabox");
+		ideas[ideaNum - 1] = idea.value;
+		idea.value = "";
+		idea.placeholder = "Story Name...";
+		ideaNum = 11;
 		var numDisplay = document.getElementById("progtext");
 		numDisplay.innerHTML = "ENTER STORY NAME";
 		var cancel = document.getElementById("cancel");
 		cancel.disabled = true;
-	} else if (ideaNum == 10) {
+		var progress = document.getElementById("progbar");
+		progress.className = "progfill" + ideaNum;
+	} else if (ideaNum == 11) {
 		var numDisplay = document.getElementById("progtext");
 		numDisplay.innerHTML = "<i class='fas fa-spinner fa-pulse'></i> SAVING STORY...";
 		var idea = document.getElementById("ideabox");

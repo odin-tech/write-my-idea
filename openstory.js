@@ -67,7 +67,7 @@ function SearchForString(str, items) {
 
 function confirmStoryDelete() {
 	var pick = document.getElementById("storypick");
-	var del = confirm("Are you sure you want to delete the story '" + pick.value + "'? This cannot be undone!\n\nTap OK to delete. Tap Cancel to go back.");
+	var del = confirm("Are you sure you want to delete the story '" + pick.value + "' by " + localStorage.getArray(pick.value)[5] + "? It'll be gone forever!\n\nTap OK to delete. Tap Cancel to go back.");
 	if (del) {
 		localStorage.deleteArray(pick.value);
 		window.location.reload();
@@ -85,9 +85,11 @@ function speakStory(part) {
 function speakAllStory() {
 	var pick = document.getElementById("storypick");
 	var selected = localStorage.getArray(pick.value);
-	for (i in selected) {
-		SpeakText(selected[i]);
-	}
+	SpeakText(selected[0]);
+	SpeakText(selected[1]);
+	SpeakText(selected[2]);
+	SpeakText(selected[3]);
+	SpeakText(selected[4]);
 }
 
 function stopReadingStory() {
@@ -121,29 +123,31 @@ function startjumble() {
 	alert("Coming Soon!");
 }
 
-function startwrite() {
-	var pick = document.getElementById("storypick");
-	var write = window.open();
-	write.document.write("<h1>" + pick.value + "</h1>");
-	write.document.write("Press the button for each idea, and write down what you hear.<br><em>Print this page!</em><br><br><br>1 (Red)<hr><br><br><br>2 (Orange)<hr><br><br><br>3 (Green)<hr><br><br><br>4 (Sky Blue)<hr><br><br><br>5 (Dark Blue)<hr>");
-}
-
 function startdraw() {
 	var pick = document.getElementById("storypick");
-	var draw = window.open();
-	draw.document.write("<h1>" + pick.value + "</h1>");
-	draw.document.write("Press the button for each idea, write down what you hear, and draw a picture above it.<br><em>Print this page!</em><table style='width: 95vw;'><tr><td style='border: 2px black solid;height: 250px;width:47.5vw;'></td><td style='border: 2px black solid;height: 250px;width:47.5vw;'></td></tr><tr><td style='height: 50px'><br>1 (Red)<hr></td><td style='height: 50px'><br>2 (Orange)<hr></td></tr><tr><td style='border: 2px black solid;height: 250px;width:47.5vw;'></td><td style='border: 2px black solid;height: 250px;width:47.5vw;'></td></tr><tr><td style='height: 50px'><br>3 (Green)<hr></td><td style='height: 50px'><br>4 (Sky Blue)<hr></td></tr><tr><td colspan='2' style='border: 2px black solid;height: 250px;width:47.5vw;'></td></tr><tr><td colspan='2' style='height: 50px'><br>5 (Dark Blue)<hr></td></tr>");
+	var tab = window.open();
+	tab.document.write("<h1>" + pick.value + "</h1>");
+	tab.document.write("<h3> by " + localStorage.getArray(pick.value)[5] + "</h3>");
+	tab.document.write("<hr>");
+	tab.document.write("");
 }
 
-function startshare() {
+function startlearn() {
 	var pick = document.getElementById("storypick");
-	var share = window.open();
-	share.document.write("<h1>" + pick.value + "</h1>");
-	share.document.write("<em>Screenshot or print this page!</em>");
-	var story = localStorage.getArray(pick.value);
-	for (i in story) {
-		share.document.write("<h3>" + story[i] + "</h3>");
-	}
+	var tab = window.open();
+	tab.document.write("<h1>" + pick.value + "</h1>");
+	tab.document.write("<h3> by " + localStorage.getArray(pick.value)[5] + "</h3>");
+	tab.document.write("<hr>");
+	tab.document.write("");
+}
+
+function startlisten() {
+	var pick = document.getElementById("storypick");
+	var tab = window.open();
+	tab.document.write("<h1>" + pick.value + "</h1>");
+	tab.document.write("<h3> by " + localStorage.getArray(pick.value)[5] + "</h3>");
+	tab.document.write("<hr>");
+	tab.document.write("");
 }
 
 // LOOP & SETUP //
@@ -157,7 +161,7 @@ function loop() {
 			if (localStorage.key(i) == "auth") {
 				//skip this one!
 			} else {
-				pick.innerHTML = pick.innerHTML + "<option value='" + localStorage.key(i) + "'>" + localStorage.key(i) + "</option>";
+				pick.innerHTML = pick.innerHTML + "<option value='" + localStorage.key(i) + "'>" + localStorage.key(i) + " (by " + localStorage.getArray(localStorage.key(i))[5] + ")</option>";
 			}
 		}
 		PopulateVoiceList();
@@ -167,9 +171,7 @@ function loop() {
 				var preview = "Please select a story above.<br>";
 			} else {
 				var preview = "";
-				for (i in story) {
-					preview = preview + story[i] + "\n";
-				}
+				preview = story[0] + " " + story[1] + " " + story[2] + " " + story[3] + " " + story[4] + "\n";
 			}
 			document.getElementById("previewstory").innerHTML = preview;
 			if (document.getElementById("storypick").value != "") {

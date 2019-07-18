@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<meta charset='utf-8'>
+	<link type="text/css" rel='stylesheet' href='style.css'>
+	<link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Farsan&display=swap" rel="stylesheet">
+	<script src="https://kit.fontawesome.com/75a0d01447.js"></script>
+	<script>
+		function deauthDevice() {
+			if (confirm("Are you sure you want to deauthorise this device? You will need to enter a key to unlock Write My Idea again!\n\n Tap OK to deauthorise. Tap Cancel to go back.") == true) {
+				localStorage.removeItem("auth");
+				document.getElementById("removekey").innerHTML = "REMOVING... <i class='fa fa-spinner fa-pulse'></i>";
+				document.getElementById("removekey").disabled = true;
+				setTimeout(function() {
+					window.location.replace("index.html");
+				}, 1000);
+			} else {
+				//Do nothing
+			}
+		}
+
+		function deleteAllStories() {
+			if (confirm("Are you sure you want to delete all stories from this device? They cannot be recovered!\n\nTap OK to delete all stories. Tap Cancel to go back.") == true) {
+				for (var i = 0, len = localStorage.length; i < len; i++) { //Load list of stories.
+					if (localStorage.key(i) == "auth") {
+						//skip this one!
+					} else {
+						localStorage.removeItem(localStorage.key(i));
+					}
+				}
+			} else {
+				//Do nothing
+			}
+		}
+
+	</script>
+	<title>New - Write My Idea!</title>
+</head>
+
+<body>
+	<div class="navbar">
+		<button id="cancel" onclick="window.location.href='menu.html'" class="navitem navleft"><i class="fas fa-arrow-left"></i> BACK</button>
+		<button id="contact" onclick="window.location.href='mailto:hello.odintech@gmail.com'" class="navitem navleft"><i class="fas fa-envelope"></i> CONTACT</button>
+		<button id="deletestories" onclick="deleteAllStories()" class="navitem danger navright">DELETE ALL <i class="fas fa-trash"></i></button>
+		<button id="removekey" onclick="deauthDevice()" class="navitem danger navright">DEAUTHORISE <i class="fas fa-user-slash"></i></button>
+
+	</div>
+	<div class="navbody teachers">
+		<h2 id="quick">Quick Help</h2>
+		<p><em>Write My Idea!</em> is a platform for students to write their stories, without being restrained by an inability to write. It supports voice input, and allows kids to express their ideas in a simple way.<br>Each story comprises of 5 "core ideas". Each idea is one part of the story (for example: "I went to the beach." is one idea).</p>
+		<h2 id="faq">Frequently Asked Questions</h2>
+		<h3>The <i class="fas fa-microphone"></i> icon isn't showing up on the keyboard.</h3>
+		<p>The microphone icon might not show up if you haven't enabled Dictation on your device. Enter your device's settings app, and search for "<em>dictation</em>" or "<em>speech</em>" and make sure it's enabled.</p>
+		<h3>Can students put in less than 5 ideas?</h3>
+		<p>Not yet. Currently, the requirement is 5, but this may change later.</p>
+		<h3>Why is the ideas box red?</h3>
+		<p>The idea box turns red when a bad word has been entered. Tap <i class="fas fa-eraser"></i> to clear the box, and try again.</p>
+		<h3>How do I print the worksheets?</h3>
+		<p><strong>On iOS:</strong> tap the Share icon (<i class="fas fa-share-square"></i>), scroll across on the third row, and tap Print.<br><strong>On Android:</strong> look for a Share button/icon and tap it. Find the Print option, and tap it.<br><strong>On Mac:</strong> press &#8984;+P.<br><strong>On Windows/Linux:</strong> press Ctrl+P.</p>
+	</div>
+</body>
+
+</html>

@@ -88,10 +88,12 @@ button {
 
 .navright {
 	float: right;
+	margin-left: 5px;
 }
 
 .navleft {
 	float: left;
+	margin-right: 5px;
 }
 
 .danger {
@@ -139,37 +141,54 @@ button {
 	height: 120%;
 	padding-right: 20px;
 	transition-duration: 0.3s;
-	background-color: #009b00;
 }
 
 .progfill0 {
 	width: 0%;
 	transition-duration: 0.3s;
+	background-color: #009b00;
 }
 
 .progfill1 {
 	width: 20%;
 	transition-duration: 0.3s;
+	background-color: #009b00;
 }
 
 .progfill2 {
 	width: 40%;
 	transition-duration: 0.3s;
+	background-color: #009b00;
 }
 
 .progfill3 {
 	width: 60%;
 	transition-duration: 0.3s;
+	background-color: #009b00;
 }
 
 .progfill4 {
 	width: 80%;
 	transition-duration: 0.3s;
+	background-color: #009b00;
 }
 
 .progfill5 {
 	width: 100%;
 	transition-duration: 0.3s;
+	background-color: #009b00;
+}
+
+.progfill10 {
+	width: 100%;
+	transition-duration: 0.3s;
+	background-color: #0080ff;
+}
+
+.progfill11 {
+	width: 100%;
+	transition-duration: 0.3s;
+	background-color: #de9100;
 }
 
 #ideacontainer {
@@ -424,10 +443,31 @@ hr {
 	position: absolute;
 	top: 0;
 	left: 0;
-	padding: 5px;
+	padding: 8px;
 	font-size: 22px;
-	border-bottom-right-radius: 10px;
+	border-bottom-right-radius: 20px;
 	background-color: #3fa0ff;
 	border: none;
 	color: white;
+}
+
+.teachbtn {
+	position: absolute;
+	top: 0;
+	right: 0;
+	padding: 8px;
+	font-size: 22px;
+	border-bottom-left-radius: 20px;
+	background-color: #3fa0ff;
+	border: none;
+	color: white;
+}
+
+.teachers,
+.teachers h2 {
+	text-align: left;
+}
+
+.teachers {
+	margin-left: 15px;
 }
