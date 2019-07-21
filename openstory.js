@@ -125,29 +125,64 @@ function startjumble() {
 
 function startdraw() {
 	var pick = document.getElementById("storypick");
+	var story = localStorage.getArray(pick.value);
 	var tab = window.open();
 	tab.document.write("<h1>" + pick.value + "</h1>");
 	tab.document.write("<h3> by " + localStorage.getArray(pick.value)[5] + "</h3>");
-	tab.document.write("<hr>");
-	tab.document.write("");
+	tab.document.write("<div style='border: 2px black solid; width: 90vw; height: 20vh;'></div>");
+	tab.document.write("<h2>" + story[0] + "</h2>");
+	tab.document.write("<h2>" + story[1] + "</h2>");
+	tab.document.write("<h2>" + story[2] + "</h2>");
+	tab.document.write("<h2>" + story[3] + "</h2>");
+	tab.document.write("<h2>" + story[4] + "</h2>");
 }
 
 function startlearn() {
 	var pick = document.getElementById("storypick");
+	var story = localStorage.getArray(pick.value);
 	var tab = window.open();
 	tab.document.write("<h1>" + pick.value + "</h1>");
 	tab.document.write("<h3> by " + localStorage.getArray(pick.value)[5] + "</h3>");
+	tab.document.write("<div style='border: 2px black solid; width: 90vw; height: 20vh;'></div>");
+	tab.document.write("<br><br><br><br>");
 	tab.document.write("<hr>");
-	tab.document.write("");
+	tab.document.write("<h2>" + story[0] + "</h2>");
+	tab.document.write("<br><br><br>");
+	tab.document.write("<hr>");
+	tab.document.write("<h2>" + story[1] + "</h2>");
+	tab.document.write("<br><br><br>");
+	tab.document.write("<hr>");
+	tab.document.write("<h2>" + story[2] + "</h2>");
+	tab.document.write("<br><br><br>");
+	tab.document.write("<hr>");
+	tab.document.write("<h2>" + story[3] + "</h2>");
+	tab.document.write("<br><br><br>");
+	tab.document.write("<hr>");
+	tab.document.write("<h2>" + story[4] + "</h2>");
 }
 
 function startlisten() {
 	var pick = document.getElementById("storypick");
+	var story = localStorage.getArray(pick.value);
 	var tab = window.open();
 	tab.document.write("<h1>" + pick.value + "</h1>");
 	tab.document.write("<h3> by " + localStorage.getArray(pick.value)[5] + "</h3>");
-	tab.document.write("<hr>");
-	tab.document.write("");
+	tab.document.write("<div style='border: 2px black solid; width: 90vw; height: 20vh;'></div>");
+	tab.document.write("<br><br><br><br>");
+	tab.document.write("<em style='color: #eb0000;'>Idea 1 (Red)</em>");
+	tab.document.write("<hr style='border-color: #eb0000;'>");
+	tab.document.write("<br><br><br>");
+	tab.document.write("<em style='color: #f59f00;'>Idea 2 (Yellow)</em>");
+	tab.document.write("<hr style='border-color: #f59f00;'>");
+	tab.document.write("<br><br><br>");
+	tab.document.write("<em style='color: #00b70e;'>Idea 3 (Green)</em>");
+	tab.document.write("<hr style='border-color: #00b70e;'>");
+	tab.document.write("<br><br><br>");
+	tab.document.write("<em style='color: #00b3de;'>Idea 4 (Sky Blue)</em>");
+	tab.document.write("<hr style='border-color: #00b3de;'>");
+	tab.document.write("<br><br><br>");
+	tab.document.write("<em style='color: #3857ff;'>Idea 5 (Dark Blue)</em>");
+	tab.document.write("<hr style='border-color: #3857ff;'>");
 }
 
 // LOOP & SETUP //
