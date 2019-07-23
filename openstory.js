@@ -120,7 +120,8 @@ function SpeakText(input) {
 // ACTIVITY FUNCTIONS //
 
 function startjumble() {
-	alert("Coming Soon!");
+	sessionStorage.setItem("jumble", document.getElementById("storypick").value);
+	window.location.assign("jumble.html");
 }
 
 function startdraw() {
@@ -190,6 +191,7 @@ function startlisten() {
 function loop() {
 	//Execute once:
 	setTimeout(function () {
+		sessionStorage.removeItem("jumble");
 		var pick = document.getElementById("storypick");
 		pick.innerHTML = "<option value=''>CHOOSE...</option>";
 		for (var i = 0, len = localStorage.length; i < len; i++) { //Load list of stories.
