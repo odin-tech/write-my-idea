@@ -221,9 +221,9 @@ button {
 }
 
 #clear {
-	position: relative;
-	top: -75px;
-	left: 93vw;
+	position: absolute;
+	top: 156px;
+	left: 3vw;
 }
 
 #clear:not(:disabled) {
@@ -231,6 +231,23 @@ button {
 }
 
 #clear:disabled {
+	transform: scale(0.75);
+	color: #c7c7c7;
+}
+
+#nextside {
+	position: absolute;
+	top: 156px;
+	right: 3vw;
+	border-radius: 10px;
+}
+
+#nextside:not(:disabled) {
+	color: #009b00;
+	background-color: rgba(0, 155, 0, 0.09);
+}
+
+#nextside:disabled {
 	transform: scale(0.75);
 	color: #c7c7c7;
 }

@@ -2,6 +2,9 @@ var helpOpen = false;
 var ideaNum = 1;
 var ideas = ["", "", "", "", ""];
 var banwords = ["poo", "fuck"];
+var title = "";
+var author = "";
+var numbers = ["First", "Second", "Third", "Fourth", "Fifth"];
 
 // HELPER FUNCTIONS //
 
@@ -98,9 +101,9 @@ function saveInput() {
 	if (ideaNum < 5) {
 		var idea = document.getElementById("ideabox");
 		idea.disabled = false;
-		var idea = document.getElementById("ideabox");
 		ideas[ideaNum - 1] = idea.value;
 		ideaNum = ideaNum + 1;
+		idea.placeholder = numbers[ideaNum - 1] + " idea goes here...";
 		if (idea.value != undefined) {
 			idea.value = ideas[ideaNum - 1];
 		} else {
@@ -111,17 +114,41 @@ function saveInput() {
 		var progress = document.getElementById("progbar");
 		progress.className = "progfill" + ideaNum;
 	} else if (ideaNum == 5) {
-		var idea = document.getElementById("ideabox");
-		ideas[ideaNum - 1] = idea.value;
-		idea.value = "";
-		idea.placeholder = "Your Name...";
-		ideaNum = 10;
-		var numDisplay = document.getElementById("progtext");
-		numDisplay.innerHTML = "ENTER AUTHOR NAME";
-		var cancel = document.getElementById("cancel");
-		cancel.disabled = true;
-		var progress = document.getElementById("progbar");
-		progress.className = "progfill" + ideaNum;
+		if (author) {
+			var numDisplay = document.getElementById("progtext");
+			numDisplay.innerHTML = "<i class='fas fa-spinner fa-pulse'></i> SAVING STORY...";
+			var idea = document.getElementById("ideabox");
+			ideas[ideaNum - 1] = idea.value;
+			idea.disabled = true;
+			if (title == "") {
+				title = idea.value;
+			}
+			var next = document.getElementById("nextIdea");
+			next.disabled = true;
+			setTimeout(function () {
+				var input = document.getElementById("ideabox");
+				for (var i in ideas) {
+					localStorage.pushArrayItem(title, ideas[i]);
+				}
+				var numDisplay = document.getElementById("progtext");
+				numDisplay.innerHTML = "<i class='fas fa-check'></i> DONE! PLEASE WAIT...";
+				setTimeout(function () {
+					window.location.href = "menu.html";
+				}, 1000);
+			}, 1000);
+		} else {
+			var idea = document.getElementById("ideabox");
+			ideas[ideaNum - 1] = idea.value;
+			idea.value = "";
+			idea.placeholder = "Your Name...";
+			ideaNum = 10;
+			var numDisplay = document.getElementById("progtext");
+			numDisplay.innerHTML = "ENTER AUTHOR NAME";
+			var cancel = document.getElementById("cancel");
+			cancel.disabled = true;
+			var progress = document.getElementById("progbar");
+			progress.className = "progfill" + ideaNum;
+		}
 	} else if (ideaNum == 10) {
 		var idea = document.getElementById("ideabox");
 		ideas[ideaNum - 1] = idea.value;
@@ -139,12 +166,15 @@ function saveInput() {
 		numDisplay.innerHTML = "<i class='fas fa-spinner fa-pulse'></i> SAVING STORY...";
 		var idea = document.getElementById("ideabox");
 		idea.disabled = true;
+		if (title == "") {
+			title = idea.value;
+		}
 		var next = document.getElementById("nextIdea");
 		next.disabled = true;
 		setTimeout(function () {
 			var input = document.getElementById("ideabox");
 			for (var i in ideas) {
-				localStorage.pushArrayItem(input.value, ideas[i]);
+				localStorage.pushArrayItem(title, ideas[i]);
 			}
 			var numDisplay = document.getElementById("progtext");
 			numDisplay.innerHTML = "<i class='fas fa-check'></i> DONE! PLEASE WAIT...";
@@ -171,20 +201,34 @@ function loadInput() {
 }
 
 function loop() {
+	setTimeout(function () {
+		if (sessionStorage.getItem("edit")) {
+			ideas = localStorage.getArray(sessionStorage.getItem("edit"));
+			document.getElementById("ideabox").value = ideas[0];
+			title = sessionStorage.getItem("edit");
+			author = ideas[5];
+			localStorage.removeItem(sessionStorage.getItem("edit"));
+			sessionStorage.removeItem("edit");
+		}
+	}, 500);
 	setInterval(function () {
 		if (document.getElementById("ideabox").value != "") {
 			document.getElementById("clear").disabled = false;
 			document.getElementById("nextIdea").disabled = false;
+			document.getElementById("nextside").disabled = false;
 			if (SearchForString(document.getElementById("ideabox").value.toLowerCase(), banwords) == true) {
 				document.getElementById("nextIdea").disabled = true;
+				document.getElementById("nextside").disabled = true;
 				document.getElementById("ideabox").className = "explicit";
 			} else {
 				document.getElementById("nextIdea").disabled = false;
+				document.getElementById("nextside").disabled = false;
 				document.getElementById("ideabox").className = "";
 			}
 		} else {
 			document.getElementById("clear").disabled = true;
 			document.getElementById("nextIdea").disabled = true;
+			document.getElementById("nextside").disabled = true;
 			document.getElementById("ideabox").className = "";
 		}
 		if (ideaNum == 1 || ideaNum == 10) {
