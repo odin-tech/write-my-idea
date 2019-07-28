@@ -68,7 +68,7 @@ function setButtons(idea) {
 	wordbank = document.getElementById("wordbank");
 	wordbankinnerHTML = "";
 	for (word in words) {
-		wordbank.innerHTML = wordbank.innerHTML + "<button class='wordbutton'>" + word + "</button>";
+		wordbank.innerHTML = wordbank.innerHTML + "<button class='wordbutton'>" + words[word] + "</button>";
 	}
 }
 
@@ -79,7 +79,7 @@ function init() {
 		//Setup code (runs once)
 		story = localStorage.getArray(sessionStorage.getItem("jumble"));
 		sessionStorage.removeItem("jumble"); //Remove Jumble key from storage
-		setButtons(ideanum -1 );
+		setButtons(story[ideanum - 1]);
 		setInterval(function () {
 			//Loop code (execute every 100ms)
 		}, 100);
