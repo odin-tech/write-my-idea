@@ -95,6 +95,12 @@ function speakAllStory() {
 function stopReadingStory() {
 	synth.cancel();
 }
+
+function editStory() {
+	sessionStorage.setItem("edit", document.getElementById("storypick").value);
+	window.location.assign("new.html");
+}
+
 // SPEECH SYNTHESIS (from MDN Web Documentation) //
 
 function PopulateVoiceList() {
@@ -130,7 +136,7 @@ function startdraw() {
 	var tab = window.open();
 	tab.document.write("<h1>" + pick.value + "</h1>");
 	tab.document.write("<h3> by " + localStorage.getArray(pick.value)[5] + "</h3>");
-	tab.document.write("<div style='border: 2px black solid; width: 90vw; height: 20vh;'></div>");
+	tab.document.write("<div style='border: 2px black solid; width: 90vw; height: 50vh;'></div>");
 	tab.document.write("<h2>" + story[0] + "</h2>");
 	tab.document.write("<h2>" + story[1] + "</h2>");
 	tab.document.write("<h2>" + story[2] + "</h2>");
@@ -144,20 +150,30 @@ function startlearn() {
 	var tab = window.open();
 	tab.document.write("<h1>" + pick.value + "</h1>");
 	tab.document.write("<h3> by " + localStorage.getArray(pick.value)[5] + "</h3>");
-	tab.document.write("<div style='border: 2px black solid; width: 90vw; height: 20vh;'></div>");
+	tab.document.write("<div style='border: 2px black solid; width: 90vw; height: 35vh;'></div>");
+	tab.document.write("<br><br><br><br>");
+	tab.document.write("<hr>");
 	tab.document.write("<br><br><br><br>");
 	tab.document.write("<hr>");
 	tab.document.write("<h2>" + story[0] + "</h2>");
 	tab.document.write("<br><br><br>");
 	tab.document.write("<hr>");
+	tab.document.write("<br><br><br><br>");
+	tab.document.write("<hr>");
 	tab.document.write("<h2>" + story[1] + "</h2>");
 	tab.document.write("<br><br><br>");
+	tab.document.write("<hr>");
+	tab.document.write("<br><br><br><br>");
 	tab.document.write("<hr>");
 	tab.document.write("<h2>" + story[2] + "</h2>");
 	tab.document.write("<br><br><br>");
 	tab.document.write("<hr>");
+	tab.document.write("<br><br><br><br>");
+	tab.document.write("<hr>");
 	tab.document.write("<h2>" + story[3] + "</h2>");
 	tab.document.write("<br><br><br>");
+	tab.document.write("<hr>");
+	tab.document.write("<br><br><br><br>");
 	tab.document.write("<hr>");
 	tab.document.write("<h2>" + story[4] + "</h2>");
 }
@@ -168,21 +184,31 @@ function startlisten() {
 	var tab = window.open();
 	tab.document.write("<h1>" + pick.value + "</h1>");
 	tab.document.write("<h3> by " + localStorage.getArray(pick.value)[5] + "</h3>");
-	tab.document.write("<div style='border: 2px black solid; width: 90vw; height: 20vh;'></div>");
+	tab.document.write("<div style='border: 2px black solid; width: 90vw; height: 35vh;'></div>");
 	tab.document.write("<br><br><br><br>");
 	tab.document.write("<em style='color: #eb0000;'>Idea 1 (Red)</em>");
+	tab.document.write("<hr style='border-color: #eb0000;'>");
+	tab.document.write("<br><br><br>");
 	tab.document.write("<hr style='border-color: #eb0000;'>");
 	tab.document.write("<br><br><br>");
 	tab.document.write("<em style='color: #f59f00;'>Idea 2 (Yellow)</em>");
 	tab.document.write("<hr style='border-color: #f59f00;'>");
 	tab.document.write("<br><br><br>");
+	tab.document.write("<hr style='border-color: #f59f00;'>");
+	tab.document.write("<br><br><br>");
 	tab.document.write("<em style='color: #00b70e;'>Idea 3 (Green)</em>");
+	tab.document.write("<hr style='border-color: #00b70e;'>");
+	tab.document.write("<br><br><br>");
 	tab.document.write("<hr style='border-color: #00b70e;'>");
 	tab.document.write("<br><br><br>");
 	tab.document.write("<em style='color: #00b3de;'>Idea 4 (Sky Blue)</em>");
 	tab.document.write("<hr style='border-color: #00b3de;'>");
 	tab.document.write("<br><br><br>");
+	tab.document.write("<hr style='border-color: #00b3de;'>");
+	tab.document.write("<br><br><br>");
 	tab.document.write("<em style='color: #3857ff;'>Idea 5 (Dark Blue)</em>");
+	tab.document.write("<hr style='border-color: #3857ff;'>");
+	tab.document.write("<br><br><br>");
 	tab.document.write("<hr style='border-color: #3857ff;'>");
 }
 
@@ -219,6 +245,7 @@ function loop() {
 				document.getElementById("delete").disabled = false;
 				document.getElementById("activityhead").className = "";
 				document.getElementById("readhead").className = "";
+				document.getElementById("edit").disabled = false;
 				if (synth.speaking == true) {
 					document.getElementById("stopread").disabled = false;
 					document.getElementById("read1").disabled = true;
@@ -249,6 +276,7 @@ function loop() {
 				document.getElementById("readall").disabled = true;
 				document.getElementById("stopread").disabled = true;
 				document.getElementById("delete").disabled = true;
+				document.getElementById("edit").disabled = true;
 				document.getElementById("activityhead").className = "notyet";
 				document.getElementById("readhead").className = "notyet";
 			}
