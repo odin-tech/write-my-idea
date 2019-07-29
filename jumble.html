@@ -13,14 +13,16 @@
 
 <body>
 	<div class="navbar">
-		<button id="quit" onclick="window.location.href='open.html'" class="navitem danger navleft"><i
+		<button id="quit" onclick="exitJumble();" class="navitem danger navleft"><i
 				class="fas fa-sign-out-alt fa-flip-horizontal"></i> EXIT</button>
-		<span class="navitem navright">LOADING... <i class="fas fa-cog fa-spin"></i></span>
-		<span class="navitem navright">IDEA 1/5</span>
+		<span class="navitem navright" id="loadingbar">LOADING... <i class="fas fa-cog fa-spin"></i></span>
+		<span class="navitem navright" id="ideacounter">IDEA 1/5</span>
 	</div>
 	<div class="navbody">
 		<div class="jumblecontainer">
-			<input readonly id="jumbleresult" placeholder="Tap buttons below to insert words..."><br>
+			<input readonly id="jumbleresult" placeholder="Tap buttons below to insert words...">
+			<button id="clear" onclick="clearInput()" class="sidebtn" disabled><i class="fas fa-eraser"></i></button>
+		<button id="nextside" onclick="checkInput()" class="sidebtn nextside"><i class="fas fa-arrow-right"></i></button><br>
 			<i id="jumblearrow" class="fas fa-arrow-up"></i>
 			<div id="wordbank">
 

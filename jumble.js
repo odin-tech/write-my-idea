@@ -1,5 +1,6 @@
 var story = [];
 var ideanum = 1;
+var words = [];
 
 // HELPER FUNCTIONS //
 
@@ -12,13 +13,13 @@ Storage.prototype.getArray = function (arrayName) {
 		}
 	}
 	return thisArray;
-}
+};
 
 Storage.prototype.pushArrayItem = function (arrayName, arrayItem) {
 	var existingArray = this.getArray(arrayName);
 	existingArray.push(arrayItem);
 	this.setItem(arrayName, JSON.stringify(existingArray));
-}
+};
 
 Storage.prototype.popArrayItem = function (arrayName) {
 	var arrayItem = {};
@@ -28,7 +29,7 @@ Storage.prototype.popArrayItem = function (arrayName) {
 		this.setItem(arrayName, JSON.stringify(existingArray));
 	}
 	return arrayItem;
-}
+};
 
 Storage.prototype.shiftArrayItem = function (arrayName) {
 	var arrayItem = {};
@@ -38,17 +39,17 @@ Storage.prototype.shiftArrayItem = function (arrayName) {
 		this.setItem(arrayName, JSON.stringify(existingArray));
 	}
 	return arrayItem;
-}
+};
 
 Storage.prototype.unshiftArrayItem = function (arrayName, arrayItem) {
 	var existingArray = this.getArray(arrayName);
 	existingArray.unshift(arrayItem);
 	this.setItem(arrayName, JSON.stringify(existingArray));
-}
+};
 
 Storage.prototype.deleteArray = function (arrayName) {
 	this.removeItem(arrayName);
-}
+};
 
 function SearchForString(str, items) {
 	for (var i in items) {
@@ -63,12 +64,64 @@ function SearchForString(str, items) {
 
 // NORMAL FUNCTIONS //
 
+function exitJumble() {
+	if (confirm("Are you sure you want to quit Jumble?") == true) {
+		window.location.assign("open.html");
+	} else {
+		//Do nothing...
+	}
+}
+
 function setButtons(idea) {
-	words = idea.split(" ");
-	wordbank = document.getElementById("wordbank");
-	wordbankinnerHTML = "";
-	for (word in words) {
-		wordbank.innerHTML = wordbank.innerHTML + "<button class='wordbutton'>" + words[word] + "</button>";
+	if (ideanum > 5) {
+		alert("Jumble Completed!");
+		window.location.assign("open.html");
+	} else {
+		words = idea.split(" ");
+		wordbank = document.getElementById("wordbank");
+		wordbank.innerHTML = "";
+		for (var word in words) {
+			wordbank.innerHTML = wordbank.innerHTML + "<button onclick='changeWord(this);' class='wordbutton' id='" + word + "'>" + words[word] + "</button>";
+		}
+	}
+}
+
+function changeWord(button) {
+	var wordnum = button.id;
+	var selected = words[wordnum];
+	var textbox = document.getElementById('jumbleresult');
+	textbox.value = textbox.value + selected + " ";
+	button.className = button.className + " used";
+	if (SearchForString(button.className, "used") == true) {
+		//Button is used
+	} else {
+		//Button is not used
+		textbox.value = textbox.value + selected + " ";
+		button.className = button.className + " used";
+	}
+}
+
+function clearInput() {
+	var textbox = document.getElementById('jumbleresult');
+	textbox.value = "";
+}
+
+function checkInput() {
+	var textbox = document.getElementById('jumbleresult');
+	var input = textbox.value;
+	var correct = "";
+	for (var word in words) {
+		correct = correct + words[word] + " ";
+	}
+	if (input == correct) {
+		alert("Correct!");
+		ideanum = ideanum + 1;
+		setButtons(story[ideanum - 1]);
+		document.getElementById('ideacounter').innerHTML = "IDEA " + ideanum + "/5";
+		textbox.value = "";
+	} else {
+		alert("Incorrect!");
+		textbox.value = "";
 	}
 }
 
@@ -80,8 +133,16 @@ function init() {
 		story = localStorage.getArray(sessionStorage.getItem("jumble"));
 		sessionStorage.removeItem("jumble"); //Remove Jumble key from storage
 		setButtons(story[ideanum - 1]);
+		var loadingtext = document.getElementById('loadingbar');
+		loadingtext.parentNode.removeChild(loadingtext);
 		setInterval(function () {
-			//Loop code (execute every 100ms)
+			if (document.getElementById('jumbleresult').value != "") {
+				document.getElementById('nextside').disabled = false;
+				document.getElementById('clear').disabled = false;
+			} else {
+				document.getElementById('nextside').disabled = true;
+				document.getElementById('clear').disabled = true;
+			}
 		}, 100);
 	}, 500);
 }

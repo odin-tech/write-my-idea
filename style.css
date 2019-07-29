@@ -534,7 +534,13 @@ hr {
 	border-radius: 20px;
 	font-size: 25px;
 	color: white;
+	margin-left: 10px;
 	background-color: #0080ff;
+}
+
+.wordbutton .used {
+	color: white;
+	background-color: #c6c6c6;
 }
 
 #jumblearrow {
