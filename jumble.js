@@ -90,10 +90,8 @@ function changeWord(button) {
 	var wordnum = button.id;
 	var selected = words[wordnum];
 	var textbox = document.getElementById('jumbleresult');
-	textbox.value = textbox.value + selected + " ";
-	button.className = button.className + " used";
-	if (SearchForString(button.className, "used") == true) {
-		//Button is used
+	if (button.className == "wordbutton used") {
+		//Button is used - do nothing!
 	} else {
 		//Button is not used
 		textbox.value = textbox.value + selected + " ";
@@ -104,6 +102,7 @@ function changeWord(button) {
 function clearInput() {
 	var textbox = document.getElementById('jumbleresult');
 	textbox.value = "";
+	setButtons(story[ideanum - 1]);
 }
 
 function checkInput() {
@@ -121,6 +120,7 @@ function checkInput() {
 		textbox.value = "";
 	} else {
 		alert("Incorrect!");
+		setButtons(story[ideanum - 1]);
 		textbox.value = "";
 	}
 }

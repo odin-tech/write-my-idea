@@ -538,7 +538,7 @@ hr {
 	background-color: #0080ff;
 }
 
-.wordbutton .used {
+.used {
 	color: white;
 	background-color: #c6c6c6;
 }
@@ -549,3 +549,34 @@ hr {
 	margin: 5px;
 }
 
+#clearJumble {
+	position: absolute;
+	top: 175px;
+	left: 3vw;
+}
+
+#clearJumble:not(:disabled) {
+	color: #ff5959;
+}
+
+#clearJumble:disabled {
+	transform: scale(0.75);
+	color: #c7c7c7;
+}
+
+#nextjumble {
+	position: absolute;
+	top: 175px;
+	right: 3vw;
+	border-radius: 10px;
+}
+
+#nextjumble:not(:disabled) {
+	color: #009b00;
+	background-color: rgba(0, 155, 0, 0.09);
+}
+
+#nextjumble:disabled {
+	transform: scale(0.75);
+	color: #c7c7c7;
+}
