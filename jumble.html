@@ -15,17 +15,26 @@
 	<div class="navbar">
 		<button id="quit" onclick="exitJumble();" class="navitem danger navleft"><i
 				class="fas fa-sign-out-alt fa-flip-horizontal"></i> EXIT</button>
-		<span class="navitem navright" id="loadingbar">LOADING... <i class="fas fa-cog fa-spin"></i></span>
 		<span class="navitem navright" id="ideacounter">IDEA 1/5</span>
 	</div>
-	<div class="navbody">
+	<div id="loadingscreen" class="">
+		<p class="bold">
+			LOADING
+		</p>
+		<p id="loadingtext" class="italic">
+			Getting story...
+		</p>
+		<i class="fas fa-cog fa-spin fa-2x"></i>
+	</div>
+	<div class="navbody jumble about">
+		<button id="readidea" onclick="readidea()"><i class="fas fa-volume-up"></i></button>
 		<div class="jumblecontainer">
 			<input readonly id="jumbleresult" placeholder="Tap buttons below to insert words...">
 			<button id="clearJumble" onclick="clearInput()" class="sidebtn" disabled><i class="fas fa-eraser"></i></button>
 		<button id="nextjumble" onclick="checkInput()" class="sidebtn nextside"><i class="fas fa-arrow-right"></i></button><br>
 			<i id="jumblearrow" class="fas fa-arrow-up"></i>
 			<div id="wordbank">
-
+				<!-- Word buttons will be added here when setButtons() is called-->
 			</div>
 		</div>
 	</div>

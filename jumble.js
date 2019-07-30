@@ -1,6 +1,8 @@
 var story = [];
 var ideanum = 1;
 var words = [];
+var speechVoice;
+var synth = window.speechSynthesis;
 
 // HELPER FUNCTIONS //
 
@@ -62,6 +64,29 @@ function SearchForString(str, items) {
 	return false;
 }
 
+// SPEECH SYNTHESIS //
+
+function PopulateVoiceList() {
+	voices = synth.getVoices();
+
+	for (i = 0; i < voices.length; i++) {
+		var voice = voices[i];
+		if (voice.lang == "EN-US") {
+			speechVoice = voice;
+			break;
+		}
+	}
+}
+
+function SpeakText(input) {
+	var utterThis = new SpeechSynthesisUtterance(input);
+	utterThis.voice = speechVoice;
+	utterThis.pitch = 1;
+	utterThis.rate = 0.75;
+	synth.speak(utterThis);
+}
+
+
 // NORMAL FUNCTIONS //
 
 function exitJumble() {
@@ -76,12 +101,19 @@ function setButtons(idea) {
 	if (ideanum > 5) {
 		alert("Jumble Completed!");
 		window.location.assign("open.html");
-	} else {
+	} else { //Generate Buttons!
 		words = idea.split(" ");
 		wordbank = document.getElementById("wordbank");
 		wordbank.innerHTML = "";
+		var numbers = [];
 		for (var word in words) {
-			wordbank.innerHTML = wordbank.innerHTML + "<button onclick='changeWord(this);' class='wordbutton' id='" + word + "'>" + words[word] + "</button>";
+			numbers.push(word);
+		}
+		for (var i in words) {
+			var num = Math.floor((Math.random() * numbers.length));
+			randnum = numbers[num];
+			numbers.splice(num, 1);
+			wordbank.innerHTML = wordbank.innerHTML + "<button onclick='changeWord(this);' class='wordbutton' id='" + randnum + "'>" + words[randnum] + "</button>";
 		}
 	}
 }
@@ -125,6 +157,14 @@ function checkInput() {
 	}
 }
 
+function readidea() {
+	if (synth.speaking == true) {
+		synth.cancel();
+	} else {
+		SpeakText(story[ideanum - 1]);
+	}
+}
+
 // SETUP FUNCTION //
 
 function init() {
@@ -133,15 +173,29 @@ function init() {
 		story = localStorage.getArray(sessionStorage.getItem("jumble"));
 		sessionStorage.removeItem("jumble"); //Remove Jumble key from storage
 		setButtons(story[ideanum - 1]);
-		var loadingtext = document.getElementById('loadingbar');
-		loadingtext.parentNode.removeChild(loadingtext);
+		
+		setTimeout(function () {
+			var loadtext = document.getElementById('loadingtext');
+		loadtext.innerHTML = "Generating jumble...";
+			setTimeout(function () {
+				document.getElementById('loadingscreen').className = "loaddone";
+			}, 1000);
+		}, 1000);
+		PopulateVoiceList();
 		setInterval(function () {
 			if (document.getElementById('jumbleresult').value != "") {
-				document.getElementById('nextside').disabled = false;
-				document.getElementById('clear').disabled = false;
+				document.getElementById('nextjumble').disabled = false;
+				document.getElementById('clearJumble').disabled = false;
 			} else {
-				document.getElementById('nextside').disabled = true;
-				document.getElementById('clear').disabled = true;
+				document.getElementById('nextjumble').disabled = true;
+				document.getElementById('clearJumble').disabled = true;
+			}
+			if (synth.speaking) {
+				document.getElementById('readidea').className = "stop";
+				document.getElementById('readidea').innerHTML = "<i class='fas fa-square'></i>";
+			} else {
+				document.getElementById('readidea').className = "";
+				document.getElementById('readidea').innerHTML = "<i class='fas fa-volume-up'></i>";
 			}
 		}, 100);
 	}, 500);
