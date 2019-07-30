@@ -621,11 +621,11 @@ hr {
 	height: 100vh;
 	width: 100vw;
 	z-index: 100;
-	background: white;
-	color: #00b3de;
+	background: #00b3de;
+	color: white;
 	text-align: center;
 	padding-top: 20vh;
-	transition-duration: 0.3s;
+	transition: ease 0.5s;
 }
 
 .italic {
@@ -633,6 +633,5 @@ hr {
 }
 
 .loaddone {
-	visibility: hidden;
-	opacity: 0;
+	margin-top: 100vh;
 }
