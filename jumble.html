@@ -4,7 +4,8 @@
 <head>
 	<meta charset='utf-8'>
 	<link type="text/css" rel='stylesheet' href='style.css'>
-	<link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Farsan&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Farsan&display=swap"
+		rel="stylesheet">
 	<script src="https://kit.fontawesome.com/75a0d01447.js"></script>]
 	<script src="jumble.js"></script>
 	<title>Jumble - Write My Idea!</title>
@@ -12,17 +13,31 @@
 
 <body>
 	<div class="navbar">
-		<button id="quit" onclick="window.location.href='open.html'" class="navitem danger navleft"><i class="fas fa-sign-out-alt fa-flip-horizontal"></i> EXIT</button>
-		<span class="navitem navright">LOADING... <i class="fas fa-cog fa-spin"></i></span>
-		<span class="navitem navright">IDEA 1/5</span>
+		<button id="quit" onclick="exitJumble();" class="navitem danger navleft"><i
+				class="fas fa-sign-out-alt fa-flip-horizontal"></i> EXIT</button>
+		<span class="navitem navright" id="ideacounter">IDEA 1/5</span>
 	</div>
-	<div class="navbody">
+	<div id="loadingscreen" class="">
+		<p class="bold">
+			LOADING
+		</p>
+		<p id="loadingtext" class="italic">
+			Getting story...
+		</p>
+		<i class="fas fa-cog fa-spin fa-2x"></i>
+	</div>
+	<div class="navbody jumble about">
+		<button id="readidea" onclick="readidea()"><i class="fas fa-volume-up"></i></button>
 		<div class="jumblecontainer">
-			<input readonly id="jumbleresult" placeholder="Tap buttons below to insert words..."><br>
+			<input readonly id="jumbleresult" placeholder="Tap buttons below to insert words...">
+			<button id="clearJumble" onclick="clearInput()" class="sidebtn" disabled><i class="fas fa-eraser"></i></button>
+		<button id="nextjumble" onclick="checkInput()" class="sidebtn nextside"><i class="fas fa-arrow-right"></i></button><br>
 			<i id="jumblearrow" class="fas fa-arrow-up"></i>
 			<div id="wordbank">
-				<button class="wordbutton">Word</button> <button class="wordbutton">Word</button> <button class="wordbutton">Word</button> <button class="wordbutton">Word</button> <button class="wordbutton">Word</button>
+				<!-- Word buttons will be added here when setButtons() is called-->
 			</div>
 		</div>
 	</div>
-</body></html>
+</body>
+
+</html>

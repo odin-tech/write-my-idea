@@ -14,13 +14,13 @@ Storage.prototype.getArray = function (arrayName) {
 		}
 	}
 	return thisArray;
-}
+};
 
 Storage.prototype.pushArrayItem = function (arrayName, arrayItem) {
 	var existingArray = this.getArray(arrayName);
 	existingArray.push(arrayItem);
 	this.setItem(arrayName, JSON.stringify(existingArray));
-}
+};
 
 Storage.prototype.popArrayItem = function (arrayName) {
 	var arrayItem = {};
@@ -30,7 +30,7 @@ Storage.prototype.popArrayItem = function (arrayName) {
 		this.setItem(arrayName, JSON.stringify(existingArray));
 	}
 	return arrayItem;
-}
+};
 
 Storage.prototype.shiftArrayItem = function (arrayName) {
 	var arrayItem = {};
@@ -40,17 +40,17 @@ Storage.prototype.shiftArrayItem = function (arrayName) {
 		this.setItem(arrayName, JSON.stringify(existingArray));
 	}
 	return arrayItem;
-}
+};
 
 Storage.prototype.unshiftArrayItem = function (arrayName, arrayItem) {
 	var existingArray = this.getArray(arrayName);
 	existingArray.unshift(arrayItem);
 	this.setItem(arrayName, JSON.stringify(existingArray));
-}
+};
 
 Storage.prototype.deleteArray = function (arrayName) {
 	this.removeItem(arrayName);
-}
+};
 
 function SearchForString(str, items) {
 	for (var i in items) {
@@ -230,10 +230,11 @@ function loop() {
 		PopulateVoiceList();
 		setInterval(function () {
 			var story = localStorage.getArray(document.getElementById("storypick").value);
+			var preview = "";
 			if (document.getElementById("storypick").value == "") {
-				var preview = "Please select a story above.<br>";
+				preview = "Please select a story above.<br>";
 			} else {
-				var preview = "";
+				preview = "";
 				preview = story[0] + " " + story[1] + " " + story[2] + " " + story[3] + " " + story[4] + "\n";
 			}
 			document.getElementById("previewstory").innerHTML = preview;
@@ -286,7 +287,7 @@ function loop() {
 				window.location.replace("index.html");
 			}
 		}, 100);
-	}, 500)
+	}, 500);
 
 }
 
