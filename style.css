@@ -560,6 +560,7 @@ hr {
 	position: absolute;
 	top: 160px;
 	left: 15px;
+	padding: 0;
 }
 
 #clearJumble:not(:disabled) {
