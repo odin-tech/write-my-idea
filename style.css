@@ -620,11 +620,19 @@ hr {
 	height: 100vh;
 	width: 100vw;
 	z-index: 100;
-	background: #00b3de;
-	color: white;
 	text-align: center;
 	padding-top: 20vh;
 	transition: ease 0.5s;
+}
+
+.loadnormal {
+	background: #00b3de;
+	color: white;
+}
+
+.loaderror {
+	background: #c20000;
+	color: white;
 }
 
 .italic {
@@ -633,4 +641,62 @@ hr {
 
 .loaddone {
 	margin-top: 100vh;
+}
+
+@keyframes flash {
+	0%   {opacity: 0.5;}
+	50%  {opacity: 1;}
+	100% {opacity: 0.5;}
+}
+
+.ani-flash {
+	animation: flash infinite cubic-bezier(.65,.05,.36,1) 1s;
+}
+
+#resultnote {
+	position: fixed;
+	width: 100vw;
+	height: 50px;
+	border-radius: 15px 15px 0px 0px;
+	text-align: center;
+	color: white;
+	padding-bottom: 50px;
+	font-size: 20px;
+	transition-duration: 0.3s;
+	box-shadow: grey 0px -2px 5px;
+}
+
+#resultnote:not(.showresult) {
+	bottom: -120px;
+}
+
+.showresult {
+	bottom: 0;
+}
+
+.correctjumble {
+	background-color: #009b00;
+}
+
+.wrongjumble {
+	background-color: #c20000;
+}
+
+#resultclose {
+	display: inline;
+	padding: 10px 20px;
+	font-size: 20px;
+	position: relative;
+	left: 41vw;
+	border-radius: 10px;
+}
+
+.closecorrect {
+	background: white;
+	color: #009b00;
+}
+
+.closewrong {
+	background: white;
+	color: #c20000;
 }

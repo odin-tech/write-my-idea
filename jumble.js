@@ -3,6 +3,7 @@ var ideanum = 1;
 var words = [];
 var speechVoice;
 var synth = window.speechSynthesis;
+var jumbleCorrect = false;
 
 // HELPER FUNCTIONS //
 
@@ -99,7 +100,6 @@ function exitJumble() {
 
 function setButtons(idea) {
 	if (ideanum > 5) {
-		alert("Jumble Completed!");
 		window.location.assign("open.html");
 	} else { //Generate Buttons!
 		words = idea.split(" ");
@@ -145,13 +145,26 @@ function checkInput() {
 		correct = correct + words[word] + " ";
 	}
 	if (input == correct) {
-		alert("Correct!");
+		jumbleCorrect = true;
+		document.getElementById('resultnote').innerHTML = '<h3><i class="fas fa-check"></i> CORRECT! <button onclick="continueJumble()" id="resultclose" class="closecorrect">NEXT <i class="fas fa-arrow-right"></i></button></h3>';
+		document.getElementById('resultnote').className = "correctjumble showresult";
+	} else {
+		jumbleCorrect = false;
+		document.getElementById('resultnote').innerHTML = '<h3><i class="fas fa-times"></i> WRONG... <button onclick="continueJumble()" id="resultclose" class="closewrong">RETRY <i class="fas fa-redo-alt"></i></button></h3>';
+		document.getElementById('resultnote').className = "wrongjumble showresult";
+	}
+}
+
+function continueJumble() {
+	var textbox = document.getElementById('jumbleresult');
+	if (jumbleCorrect) {
+		document.getElementById('resultnote').className = "";
 		ideanum = ideanum + 1;
 		setButtons(story[ideanum - 1]);
 		document.getElementById('ideacounter').innerHTML = "IDEA " + ideanum + "/5";
 		textbox.value = "";
 	} else {
-		alert("Incorrect!");
+		document.getElementById('resultnote').className = "";
 		setButtons(story[ideanum - 1]);
 		textbox.value = "";
 	}
@@ -170,34 +183,44 @@ function readidea() {
 function init() {
 	setTimeout(function () {
 		//Setup code (runs once)
-		story = localStorage.getArray(sessionStorage.getItem("jumble"));
-		sessionStorage.removeItem("jumble"); //Remove Jumble key from storage
-		setButtons(story[ideanum - 1]);
-		
-		setTimeout(function () {
-			var loadtext = document.getElementById('loadingtext');
-		loadtext.innerHTML = "Generating jumble...";
+		if (sessionStorage.getItem("jumble") == undefined || sessionStorage.getItem("jumble") == null) { //Error! Story not found!
+			document.getElementById('loadtitle').innerHTML = "ERROR";
+			document.getElementById('loadtext').innerHTML = "Story not found!<br>Exiting...";
+			document.getElementById('loadicon').className = "fas fa-exclamation-triangle fa-2x";
+			document.getElementById('loadiconcont').className = "ani-flash";
+			document.getElementById('loadingscreen').className = "loaderror";
 			setTimeout(function () {
-				document.getElementById('loadingscreen').className = "loaddone";
+				window.location.assign('open.html');
+			}, 3000);
+		} else {
+			story = localStorage.getArray(sessionStorage.getItem("jumble"));
+			sessionStorage.removeItem("jumble"); //Remove Jumble key from storage
+			setButtons(story[ideanum - 1]);
+			setTimeout(function () {
+				var loadtext = document.getElementById('loadtext');
+				loadtext.innerHTML = "Generating jumble...";
+				setTimeout(function () {
+					document.getElementById('loadingscreen').className = "loadnormal loaddone";
+				}, 1000);
 			}, 1000);
-		}, 1000);
-		PopulateVoiceList();
-		setInterval(function () {
-			if (document.getElementById('jumbleresult').value != "") {
-				document.getElementById('nextjumble').disabled = false;
-				document.getElementById('clearJumble').disabled = false;
-			} else {
-				document.getElementById('nextjumble').disabled = true;
-				document.getElementById('clearJumble').disabled = true;
-			}
-			if (synth.speaking) {
-				document.getElementById('readidea').className = "stop";
-				document.getElementById('readidea').innerHTML = "<i class='fas fa-square'></i>";
-			} else {
-				document.getElementById('readidea').className = "";
-				document.getElementById('readidea').innerHTML = "<i class='fas fa-volume-up'></i>";
-			}
-		}, 100);
+			PopulateVoiceList();
+			setInterval(function () {
+				if (document.getElementById('jumbleresult').value != "") {
+					document.getElementById('nextjumble').disabled = false;
+					document.getElementById('clearJumble').disabled = false;
+				} else {
+					document.getElementById('nextjumble').disabled = true;
+					document.getElementById('clearJumble').disabled = true;
+				}
+				if (synth.speaking) {
+					document.getElementById('readidea').className = "stop";
+					document.getElementById('readidea').innerHTML = "<i class='fas fa-square'></i>";
+				} else {
+					document.getElementById('readidea').className = "";
+					document.getElementById('readidea').innerHTML = "<i class='fas fa-volume-up'></i>";
+				}
+			}, 100);
+		}
 	}, 500);
 }
 

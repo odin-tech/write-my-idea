@@ -17,14 +17,17 @@
 				class="fas fa-sign-out-alt fa-flip-horizontal"></i> EXIT</button>
 		<span class="navitem navright" id="ideacounter">IDEA 1/5</span>
 	</div>
-	<div id="loadingscreen" class="">
-		<p class="bold">
+	<div id="loadingscreen" class="loadnormal">
+		<p id="loadiconcont"><i id="loadicon" class="fas fa-cog fa-spin fa-2x"></i></p>
+		<p class="bold" id="loadtitle">
 			LOADING
 		</p>
-		<p id="loadingtext" class="italic">
+		<p id="loadtext" class="italic">
 			Getting story...
 		</p>
-		<i class="fas fa-cog fa-spin fa-2x"></i>
+	</div>
+	<div id="resultnote" class="">
+		<h3><i class="fas fa-times"></i> WRONG... <button onclick="continueJumble()" id="resultclose" class="closewrong">RETRY <i class="fas fa-redo-alt"></i></button></h3>
 	</div>
 	<div class="navbody jumble about">
 		<button id="readidea" onclick="readidea()"><i class="fas fa-volume-up"></i></button>
