@@ -223,7 +223,9 @@ button {
 #clear {
 	position: absolute;
 	top: 156px;
-	left: 3vw;
+	left: 15px;
+	margin: 0;
+	padding: 0;
 }
 
 #clear:not(:disabled) {
@@ -238,8 +240,10 @@ button {
 #nextside {
 	position: absolute;
 	top: 156px;
-	right: 3vw;
+	right: 15px;
 	border-radius: 10px;
+	padding: 0px 8px 0px 8px;
+	margin: 0;
 }
 
 #nextside:not(:disabled) {
