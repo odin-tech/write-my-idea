@@ -559,7 +559,7 @@ hr {
 #clearJumble {
 	position: absolute;
 	top: 160px;
-	left: 3vw;
+	left: 15px;
 }
 
 #clearJumble:not(:disabled) {
@@ -574,7 +574,7 @@ hr {
 #nextjumble {
 	position: absolute;
 	top: 160px;
-	right: 3vw;
+	right: 15px;
 	border-radius: 10px;
 }
 
@@ -660,7 +660,8 @@ hr {
 	border-radius: 15px 15px 0px 0px;
 	text-align: center;
 	color: white;
-	padding-bottom: 50px;
+	padding-bottom: 20px;
+	padding-top: 15px;
 	font-size: 20px;
 	transition-duration: 0.3s;
 	box-shadow: grey 0px -2px 5px;
@@ -686,8 +687,10 @@ hr {
 	display: inline;
 	padding: 10px 20px;
 	font-size: 20px;
-	position: relative;
-	left: 41vw;
+	position: absolute;
+	top: -20px;
+	left: 45vw;
+	box-shadow: grey 0px 0px 5px;
 	border-radius: 10px;
 }
 
