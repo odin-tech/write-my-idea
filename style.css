@@ -111,7 +111,7 @@ button {
 	width: 80vw;
 	height: 50px;
 	font-size: 35px;
-	font-family: "Farsan";
+	font-family: "Schoolbell";
 	border: solid 1px #959595;
 	border-radius: 20px 20px 0px 0px;
 	transition-duration: 0.3s;
@@ -505,7 +505,7 @@ hr {
 	width: 80vw;
 	height: 50px;
 	font-size: 35px;
-	font-family: "Farsan";
+	font-family: "Schoolbell";
 	border: solid 1px #959595;
 	border-radius: 20px;
 	transition-duration: 0.3s;
@@ -539,6 +539,7 @@ hr {
 	border-radius: 20px;
 	font-size: 25px;
 	color: white;
+	font-family: "Schoolbell";
 	margin-left: 10px;
 	margin-top: 0px;
 	height: 50px;

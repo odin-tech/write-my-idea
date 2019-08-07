@@ -106,10 +106,15 @@ function setButtons(idea) {
 		wordbank = document.getElementById("wordbank");
 		wordbank.innerHTML = "";
 		var numbers = [];
-		for (var word in words) {
+		for (var chunk in words) { //Check for empty "words"
+			if (words[chunk] == "" || words[chunk] == " " || words[chunk] == "  ") {
+				words.splice(chunk, 1); //Remove!
+			}
+		}
+		for (var word in words) { //Make list of numbers
 			numbers.push(word);
 		}
-		for (var i in words) {
+		for (var i in words) { //Make buttons
 			var num = Math.floor((Math.random() * numbers.length));
 			randnum = numbers[num];
 			numbers.splice(num, 1);
