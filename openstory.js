@@ -136,7 +136,7 @@ function startdraw() {
 	var tab = window.open();
 	tab.document.write("<h1>" + pick.value + "</h1>");
 	tab.document.write("<h3> by " + localStorage.getArray(pick.value)[5] + "</h3>");
-	tab.document.write("<div style='border: 2px black solid; width: 90vw; height: 70vh;'></div>");
+	tab.document.write("<div style='border: 2px black solid; width: 90vw; height: 50vh;'></div>");
 	tab.document.write("<h2>" + story[0] + "</h2>");
 	tab.document.write("<h2>" + story[1] + "</h2>");
 	tab.document.write("<h2>" + story[2] + "</h2>");
