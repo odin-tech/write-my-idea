@@ -17,13 +17,13 @@ Storage.prototype.getArray = function (arrayName) {
 		}
 	}
 	return thisArray;
-}
+};
 
 Storage.prototype.pushArrayItem = function (arrayName, arrayItem) {
 	var existingArray = this.getArray(arrayName);
 	existingArray.push(arrayItem);
 	this.setItem(arrayName, JSON.stringify(existingArray));
-}
+};
 
 Storage.prototype.popArrayItem = function (arrayName) {
 	var arrayItem = {};
@@ -33,7 +33,7 @@ Storage.prototype.popArrayItem = function (arrayName) {
 		this.setItem(arrayName, JSON.stringify(existingArray));
 	}
 	return arrayItem;
-}
+};
 
 Storage.prototype.shiftArrayItem = function (arrayName) {
 	var arrayItem = {};
@@ -43,17 +43,17 @@ Storage.prototype.shiftArrayItem = function (arrayName) {
 		this.setItem(arrayName, JSON.stringify(existingArray));
 	}
 	return arrayItem;
-}
+};
 
 Storage.prototype.unshiftArrayItem = function (arrayName, arrayItem) {
 	var existingArray = this.getArray(arrayName);
 	existingArray.unshift(arrayItem);
 	this.setItem(arrayName, JSON.stringify(existingArray));
-}
+};
 
 Storage.prototype.deleteArray = function (arrayName) {
 	this.removeItem(arrayName);
-}
+};
 
 function SearchForString(str, items) {
 	for (var i in items) {
@@ -69,11 +69,20 @@ function SearchForString(str, items) {
 // NORMAL FUNCTIONS //
 
 function confirmCancelStory() {
-	var leave = confirm("Are you sure you want to cancel? Your story will be deleted!\n\Tap OK to exit. Tap Cancel to return to your story.")
-	if (leave == true) {
-		window.location.href = "menu.html";
+	if (sessionStorage.getItem("edit")) {
+		var leave = confirm("Are you sure you want to cancel? Any changes you made to " + title + " will be reverted!");
+		if (leave == true) {
+			window.location.href = "open.html";
+		} else {
+			//Do nothing!
+		}
 	} else {
-		//Do nothing!
+		var leave = confirm("Are you sure you want to cancel? Your story will be deleted!\n\Tap OK to exit. Tap Cancel to return to your story.");
+		if (leave == true) {
+			window.location.href = "menu.html";
+		} else {
+			//Do nothing!
+		}
 	}
 }
 
@@ -115,6 +124,8 @@ function saveInput() {
 		progress.className = "progfill" + ideaNum;
 	} else if (ideaNum == 5) {
 		if (author) {
+			localStorage.removeItem(sessionStorage.getItem("edit"));
+			sessionStorage.removeItem("edit"); //If editing, get rid of the old story.
 			var numDisplay = document.getElementById("progtext");
 			numDisplay.innerHTML = "<i class='fas fa-spinner fa-pulse'></i> SAVING STORY...";
 			var idea = document.getElementById("ideabox");
@@ -162,6 +173,7 @@ function saveInput() {
 		var progress = document.getElementById("progbar");
 		progress.className = "progfill" + ideaNum;
 	} else if (ideaNum == 11) {
+		
 		var numDisplay = document.getElementById("progtext");
 		numDisplay.innerHTML = "<i class='fas fa-spinner fa-pulse'></i> SAVING STORY...";
 		var idea = document.getElementById("ideabox");
@@ -207,8 +219,6 @@ function loop() {
 			document.getElementById("ideabox").value = ideas[0];
 			title = sessionStorage.getItem("edit");
 			author = ideas[5];
-			localStorage.removeItem(sessionStorage.getItem("edit"));
-			sessionStorage.removeItem("edit");
 		}
 	}, 500);
 	setInterval(function () {
