@@ -100,7 +100,10 @@ function exitJumble() {
 
 function setButtons(idea) {
 	if (ideanum > 5) {
-		window.location.assign("open.html");
+		document.getElementById('successscreen').className = "";
+		setTimeout(function () {
+			window.location.assign("open.html");
+		}, 3000);
 	} else { //Generate Buttons!
 		words = idea.split(" ");
 		wordbank = document.getElementById("wordbank");
