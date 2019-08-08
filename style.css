@@ -267,15 +267,19 @@ button {
 	border: solid 1px #0080ff;
 	color: #0080ff;
 	border-radius: 10px;
-	margin: 20px;
+	margin-top: 20px;
 	overflow: hidden;
 	position: fixed;
 	top: 100px;
 	width: 88vw;
 	padding: 5px;
-	margin-left: 10vw;
 	background-color: #ebf5ff;
 	transition-duration: 0.3s;
+	padding-right: 20vw;
+}
+
+#helpbox:not(.hide) {
+	margin-left: 20px;
 }
 
 #helpbox h2 {
@@ -288,7 +292,7 @@ button {
 
 .hide {
 	transition-duration: 0.3s;
-	left: 120vw;
+	margin-left: 120vw;
 }
 
 .explicit {
