@@ -1,6 +1,7 @@
 var story = [];
-var ideanum = 1;
 var words = [];
+var wordnum = 1;
+var word = "";
 var speechVoice;
 var synth = window.speechSynthesis;
 var jumbleCorrect = false;
@@ -82,8 +83,8 @@ function PopulateVoiceList() {
 function SpeakText(input) {
 	var utterThis = new SpeechSynthesisUtterance(input);
 	utterThis.voice = speechVoice;
-	utterThis.pitch = 1;
-	utterThis.rate = 0.75;
+	utterThis.pitch = 1.5;
+	utterThis.rate = 0.5;
 	synth.speak(utterThis);
 }
 
@@ -91,51 +92,45 @@ function SpeakText(input) {
 // NORMAL FUNCTIONS //
 
 function exitJumble() {
-	if (confirm("Are you sure you want to quit Jumble?") == true) {
+	if (confirm("Are you sure you want to quit Spell?") == true) {
 		window.location.assign("open.html");
 	} else {
 		//Do nothing...
 	}
 }
 
-function setButtons(idea) {
-	if (ideanum > 5) {
+function setButtons(selectedword) {
+	if (wordnum > 10) {
 		document.getElementById('successscreen').className = "";
 		setTimeout(function () {
 			window.location.assign("open.html");
 		}, 3000);
 	} else { //Generate Buttons!
-		words = idea.split(" ");
-		wordbank = document.getElementById("wordbank");
-		wordbank.innerHTML = "";
+		SpeakText(word);
 		var numbers = [];
-		for (var chunk in words) { //Check for empty "words"
-			if (words[chunk] == "" || words[chunk] == " " || words[chunk] == "  ") {
-				words.splice(chunk, 1); //Remove!
-			}
+		var wordbank = document.getElementById("wordbank");
+		wordbank.innerHTML = "";
+		for (var letter in selectedword) {
+			numbers.push(letter);
 		}
-		for (var word in words) { //Make list of numbers
-			numbers.push(word);
-		}
-		for (var i in words) { //Make buttons
+		for (var i in selectedword) {
 			var num = Math.floor((Math.random() * numbers.length));
 			randnum = numbers[num];
 			numbers.splice(num, 1);
-			wordbank.innerHTML = wordbank.innerHTML + "<button onclick='changeWord(this);' class='wordbutton' id='" + randnum + "'>" + words[randnum] + "</button>";
+			wordbank.innerHTML = wordbank.innerHTML + "<button onclick='changeWord(this);' class='wordbutton' id='" + randnum + "'>" + selectedword[randnum] + "</button>";
 		}
-		SpeakText(idea);
 	}
 }
 
 function changeWord(button) {
-	var wordnum = button.id;
-	var selected = words[wordnum];
+	var num = button.id;
+	var selected = word[num];
 	var textbox = document.getElementById('jumbleresult');
 	if (button.className == "wordbutton used") {
 		//Button is used - do nothing!
 	} else {
 		//Button is not used
-		textbox.value = textbox.value + selected + " ";
+		textbox.value = textbox.value + selected;
 		button.className = button.className + " used";
 	}
 }
@@ -143,17 +138,13 @@ function changeWord(button) {
 function clearInput() {
 	var textbox = document.getElementById('jumbleresult');
 	textbox.value = "";
-	setButtons(story[ideanum - 1]);
+	setButtons(word);
 }
 
 function checkInput() {
 	var textbox = document.getElementById('jumbleresult');
 	var input = textbox.value;
-	var correct = "";
-	for (var word in words) {
-		correct = correct + words[word] + " ";
-	}
-	if (input == correct) {
+	if (input == word) {
 		jumbleCorrect = true;
 		document.getElementById('resultnote').innerHTML = '<h3><i class="fas fa-check"></i> CORRECT! <button onclick="continueJumble()" id="resultclose" class="closecorrect">NEXT <i class="fas fa-arrow-right"></i></button></h3>';
 		document.getElementById('resultnote').className = "correctjumble showresult";
@@ -168,13 +159,14 @@ function continueJumble() {
 	var textbox = document.getElementById('jumbleresult');
 	if (jumbleCorrect) {
 		document.getElementById('resultnote').className = "";
-		ideanum = ideanum + 1;
-		setButtons(story[ideanum - 1]);
-		document.getElementById('ideacounter').innerHTML = "IDEA " + ideanum + "/5";
+		wordnum = wordnum + 1;
+		word = words[Math.floor(Math.random() * words.length)];
+		setButtons(word);
+		document.getElementById('ideacounter').innerHTML = "WORD " + wordnum + "/10";
 		textbox.value = "";
 	} else {
 		document.getElementById('resultnote').className = "";
-		setButtons(story[ideanum - 1]);
+		setButtons(word);
 		textbox.value = "";
 	}
 }
@@ -183,7 +175,7 @@ function readidea() {
 	if (synth.speaking == true) {
 		synth.cancel();
 	} else {
-		SpeakText(story[ideanum - 1]);
+		SpeakText(word);
 	}
 }
 
@@ -192,7 +184,7 @@ function readidea() {
 function init() {
 	setTimeout(function () {
 		//Setup code (runs once)
-		if (sessionStorage.getItem("jumble") == undefined || sessionStorage.getItem("jumble") == null) { //Error! Story not found!
+		if (sessionStorage.getItem("spell") == undefined || sessionStorage.getItem("spell") == null) { //Error! Story not found!
 			document.getElementById('loadtitle').innerHTML = "ERROR";
 			document.getElementById('loadtext').innerHTML = "Story not found!<br>Exiting...";
 			document.getElementById('loadicon').className = "fas fa-exclamation-triangle fa-2x";
@@ -202,14 +194,22 @@ function init() {
 				window.location.assign('open.html');
 			}, 3000);
 		} else {
-			story = localStorage.getArray(sessionStorage.getItem("jumble"));
-			sessionStorage.removeItem("jumble"); //Remove Jumble key from storage
+			story = localStorage.getArray(sessionStorage.getItem("spell"));
+			sessionStorage.removeItem("spell"); //Remove Jumble key from storage
+
+			//Split the story into it's words
+			for (var idea in story) {
+				for(var i in story[idea].split(" ")) {
+					words.push(story[idea].split(" ")[i]);
+				}
+			}
+			word = words[Math.floor(Math.random() * words.length)];
 			setTimeout(function () {
 				var loadtext = document.getElementById('loadtext');
-				loadtext.innerHTML = "Generating jumble...";
+				loadtext.innerHTML = "Generating words...";
 				setTimeout(function () {
 					document.getElementById('loadingscreen').className = "loadnormal loaddone";
-					setButtons(story[ideanum - 1]);
+					setButtons(word);
 				}, 1000);
 			}, 1000);
 			PopulateVoiceList();

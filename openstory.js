@@ -130,6 +130,11 @@ function startjumble() {
 	window.location.assign("jumble.html"); //Redirect to Jumble page
 }
 
+function startspell() {
+	sessionStorage.setItem("spell", document.getElementById("storypick").value); //Assign Spell ID.
+	window.location.assign("spell.html"); //Redirect to Spell page
+}
+
 function startdraw() {
 	var pick = document.getElementById("storypick");
 	var story = localStorage.getArray(pick.value);
@@ -249,6 +254,7 @@ function loop() {
 			document.getElementById("previewstory").innerHTML = preview;
 			if (document.getElementById("storypick").value != "") {
 				document.getElementById("startjumble").disabled = false;
+				document.getElementById("startspell").disabled = false;
 				document.getElementById("startwrite").disabled = false;
 				document.getElementById("startdraw").disabled = false;
 				document.getElementById("share").disabled = false;
@@ -275,6 +281,7 @@ function loop() {
 				}
 			} else {
 				document.getElementById("startjumble").disabled = true;
+				document.getElementById("startspell").disabled = true;
 				document.getElementById("startwrite").disabled = true;
 				document.getElementById("startdraw").disabled = true;
 				document.getElementById("share").disabled = true;

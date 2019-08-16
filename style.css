@@ -218,6 +218,7 @@ button {
 .navitem:disabled {
 	color: #c6c6c6;
 	background-color: transparent;
+	cursor: not-allowed;
 }
 
 #clear {
@@ -235,6 +236,7 @@ button {
 #clear:disabled {
 	transform: scale(0.75);
 	color: #c7c7c7;
+	cursor: not-allowed;
 }
 
 #nextside {
@@ -254,6 +256,7 @@ button {
 #nextside:disabled {
 	transform: scale(0.75);
 	color: #c7c7c7;
+	cursor: not-allowed;
 }
 
 #inputhelp {
@@ -326,26 +329,35 @@ select {
 	padding: 15px 20px;
 	border-radius: 10px;
 	margin: 0px 0.45vw;
-	width: 23.7vw;
+	width: 18.7vw;
 	box-shadow: 0px 2px 5px grey;
+}
+
+.activityselect:disabled {
+	cursor: not-allowed;
 }
 
 .navbody .open {
 	text-align: center;
 }
 
-#startjumble:not(:disabled) {
+#startspell:not(:disabled) {
 	background-color: #f59f00;
 	color: white;
 }
 
-#startwrite:not(:disabled) {
+#startjumble:not(:disabled) {
 	background-color: #00b70e;
 	color: white;
 }
 
-#startdraw:not(:disabled) {
+#startwrite:not(:disabled) {
 	background-color: #00b3de;
+	color: white;
+}
+
+#startdraw:not(:disabled) {
+	background-color: #3857ff;
 	color: white;
 }
 
@@ -361,6 +373,10 @@ select {
 	font-size: 20px;
 	margin: 0px 0.45vw;
 	box-shadow: 0px 2px 5px grey;
+}
+
+.readstory:disabled {
+	cursor: not-allowed;
 }
 
 #read1:not(:disabled) {
@@ -567,7 +583,7 @@ hr {
 
 #clearJumble {
 	position: absolute;
-	top: 160px;
+	top: 140px;
 	left: 15px;
 	padding: 0;
 	margin: 0;
@@ -580,11 +596,12 @@ hr {
 #clearJumble:disabled {
 	transform: scale(0.75);
 	color: #c7c7c7;
+	cursor: not-allowed;
 }
 
 #nextjumble {
 	position: absolute;
-	top: 160px;
+	top: 140px;
 	right: 15px;
 	padding: 0px 8px 0px 8px;
 	border-radius: 10px;
@@ -599,6 +616,7 @@ hr {
 #nextjumble:disabled {
 	transform: scale(0.75);
 	color: #c7c7c7;
+	cursor: not-allowed;
 }
 
 #readidea {
@@ -607,7 +625,7 @@ hr {
 	width: 75px;
 	height: 75px;
 	position: relative;
-	top: -55px;
+	top: -35px;
 	font-size: 25px;
 	box-shadow: 0px 2px 5px grey;
 }
