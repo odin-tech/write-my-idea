@@ -1,7 +1,7 @@
 var helpOpen = false;
 var ideaNum = 1;
 var ideas = ["", "", "", "", ""];
-var banwords = ["poo", "fuck"];
+var banwords = ["poo ", "fuck", "shit", "ass "];
 var title = "";
 var author = "";
 var numbers = ["First", "Second", "Third", "Fourth", "Fifth"];
@@ -70,15 +70,13 @@ function SearchForString(str, items) {
 
 function confirmCancelStory() {
 	if (sessionStorage.getItem("edit")) {
-		var leave = confirm("Are you sure you want to cancel? Any changes you made to " + title + " will be reverted!");
-		if (leave == true) {
+		if (confirm("Are you sure you want to cancel? Any changes you made to " + title + " will be removed!\nTap OK to leave. Tap Cancel to return to your story.") == true) {
 			window.location.href = "open.html";
 		} else {
 			//Do nothing!
 		}
 	} else {
-		var leave = confirm("Are you sure you want to cancel? Your story will be deleted!\n\Tap OK to exit. Tap Cancel to return to your story.");
-		if (leave == true) {
+		if (confirm("Are you sure you want to cancel? Your story will be deleted!\n\Tap OK to exit. Tap Cancel to return to your story.") == true) {
 			window.location.href = "menu.html";
 		} else {
 			//Do nothing!
@@ -246,7 +244,7 @@ function loop() {
 		} else {
 			document.getElementById("prevIdea").disabled = false;
 		}
-		if (localStorage["auth"] != undefined) {
+		if (localStorage.auth != undefined) {
 			//do nothing
 		} else {
 			window.location.replace("index.html");
