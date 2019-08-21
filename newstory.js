@@ -1,7 +1,7 @@
 var helpOpen = false;
 var ideaNum = 1;
 var ideas = ["", "", "", "", ""];
-var banwords = ["poo ", "fuck", "shit", "ass "];
+var banwords = ["poo ", "fuck", "shit", "ass ", "cunt ", "wank", "piss "];
 var title = "";
 var author = "";
 var numbers = ["First", "Second", "Third", "Fourth", "Fifth"];
