@@ -37,7 +37,7 @@ function requestCodes() {
 }
 
 function checkForAuthorisation() {
-	if (localStorage["auth"] != undefined) {
+	if (localStorage.auth != undefined) {
 		window.location.replace("menu.html");
 	} else {
 		requestCodes();

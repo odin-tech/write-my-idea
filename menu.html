@@ -9,18 +9,19 @@
 	<script src="https://kit.fontawesome.com/75a0d01447.js"></script>
 	<title>Menu - Write My Idea!</title>
 	<script>
-		if (localStorage["auth"] != undefined) {
-			//do nothing
-		} else {
+		if (localStorage["auth"] == undefined) {
+			alert("No authorisation found. auth = " + localStorage["auth"]);
 			window.location.replace("index.html");
+		} else {
+			//nothing
 		}
 	</script>
 </head>
 
 <body>
 	<h1 id="title">Write My Idea!</h1>
-	<button id="new" onclick="window.location.href='new.html'" class="fillleft filllarge"><i class="fas fa-plus icon-text"></i> NEW</button>
-	<button id="open" onclick="window.location.href='open.html'" class="fillright filllarge">OPEN <i class="fas fa-folder-open icon-text"></i></button>
+	<button id="new" onclick="window.location.href='new.html'" class="fillleft filllarge"><i class="fas fa-plus icon-text"></i><br>NEW STORY</button>
+	<button id="open" onclick="window.location.href='open.html'" class="fillright filllarge"><i class="fas fa-folder-open icon-text"></i><br>OPEN STORY</button>
 	<button class="aboutbtn" onclick="window.location.href='about.html'">ABOUT <i class="fa fa-info-circle"></i></button>
 	<button class="teachbtn" onclick="window.location.href='teachers.html'"><i class="fa fa-chalkboard-teacher"></i> TEACHERS</button>
 </body></html>
