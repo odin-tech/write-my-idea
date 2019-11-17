@@ -838,3 +838,30 @@ Not supported by touchscreen devices - save for later
 	background: white;
 	color: #c20000;
 }
+
+
+#selectstory {
+	padding-bottom: 25px;
+}
+
+#storyhead {
+	transition: all 0.3s;
+}
+
+.selectsection {
+	height: 150px;
+	width: 100vw;
+	transition: all 0.3s;
+	overflow: hidden;
+	box-shadow: grey 0px 5px 6px;
+}
+
+.collapse {
+	height: 50px;
+	margin-top: -12px;
+}
+
+.highlight {
+	color: #0080ff;
+	font-size: 28px;
+}

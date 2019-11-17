@@ -5,7 +5,8 @@
 	<meta charset='utf-8'>
 	<link type="text/css" rel='stylesheet' href='style.css'>
 	<link rel="icon" href='favicon.png'>
-	<link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,600|Mali&display=swap" rel="stylesheet"> 
+	<link href="https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,600|Mali&display=swap"
+		rel="stylesheet">
 	<script src="https://kit.fontawesome.com/75a0d01447.js"></script>
 	<script src="openstory.js"></script>
 	<title>Open - Write My Idea!</title>
@@ -13,31 +14,51 @@
 
 <body>
 	<div class="navbar">
-		<button id="return" onclick="window.location.href='menu.html'" class="navitem navleft"><i class="fas fa-angle-left"></i> MENU</button>
-		<button id="delete" onclick="confirmStoryDelete()" class="navitem navright danger">DELETE <i class="fas fa-trash"></i></button>
+		<button id="return" onclick="window.location.href='menu.html'" class="navitem navleft"><i
+				class="fas fa-angle-left"></i> MENU</button>
+		<button id="delete" onclick="confirmStoryDelete()" class="navitem navright danger">DELETE <i
+				class="fas fa-trash"></i></button>
 		<button id="edit" onclick="editStory()" class="navitem navright">EDIT <i class="fas fa-edit"></i></button>
 	</div>
 	<div class="navbody open">
-		<h2 class="rainbow">WHICH STORY?</h2>
-		<h2><select id="storypick">
-				<option value="">LOADING...</option>
-			</select></h2>
-		<p id="previewstory">Loading...</p>
-		<hr>
-		<h2 id="activityhead" class="notyet">WHAT DO YOU WANT TO DO?</h2>
-		<button id="startspell" class="activityselect" disabled onclick="startspell()"><i class="fas fa-spell-check icon-text"></i> SPELL</button>
-		<button id="startjumble" class="activityselect" disabled onclick="startjumble()"><i class="fas fa-puzzle-piece icon-text"></i> JUMBLE</button>
-		<button id="startwrite" class="activityselect" disabled onclick="startdraw()"><i class="fas fa-paint-brush icon-text"></i> DRAW</button>
-		<button id="startdraw" class="activityselect" disabled onclick="startlearn()"><i class="fas fa-pencil-alt icon-text"></i> LEARN</button>
-		<button id="share" class="activityselect" disabled onclick="startlisten()"><i class="fas fa-volume-up icon-text"></i> LISTEN & WRITE</button>
-		<hr>
-		<h2 id="readhead" class="notyet">SPEAK STORY</h2>
-		<button id="read1" class="readstory" disabled onclick="speakStory(0)"><i class="fas fa-volume-up fa-fw icon-text"></i> IDEA 1</button>
-		<button id="read2" class="readstory" disabled onclick="speakStory(1)"><i class="fas fa-volume-up fa-fw icon-text"></i> IDEA 2</button>
-		<button id="read3" class="readstory" disabled onclick="speakStory(2)"><i class="fas fa-volume-up fa-fw icon-text"></i> IDEA 3</button>
-		<button id="read4" class="readstory" disabled onclick="speakStory(3)"><i class="fas fa-volume-up fa-fw icon-text"></i> IDEA 4</button>
-		<button id="read5" class="readstory" disabled onclick="speakStory(4)"><i class="fas fa-volume-up fa-fw icon-text"></i> IDEA 5</button>
-		<button id="readall" class="readstory" disabled onclick="speakAllStory()"><i class="fas fa-volume-up fa-fw icon-text"></i> ALL</button>
-		<button id="stopread" class="readstory" disabled onclick="stopReadingStory()"><i class="fas fa-square fa-fw icon-text"></i> STOP</button>
+		<div id="selectstory" class="selectsection">
+			<h2 id="storyhead" class="highlight"><i class="fas fa-book-open"></i> WHICH STORY?</h2>
+			<h2><select id="storypick">
+					<option value="">LOADING...</option>
+				</select></h2>
+			<p id="previewstory">Loading...</p>
+		</div>
+		<div id="activityselect" class="selectsection collapse">
+			<h2 id="activityhead" class="notyet"><i class='fas fa-gamepad'></i> WHICH ACTIVITY?</h2>
+			<button id="startspell" class="activityselect" disabled onclick="startspell()"><i
+					class="fas fa-spell-check icon-text"></i> SPELL</button>
+			<button id="startjumble" class="activityselect" disabled onclick="startjumble()"><i
+					class="fas fa-puzzle-piece icon-text"></i> JUMBLE</button>
+			<button id="startwrite" class="activityselect" disabled onclick="startdraw()"><i
+					class="fas fa-paint-brush icon-text"></i> DRAW</button>
+			<button id="startdraw" class="activityselect" disabled onclick="startlearn()"><i
+					class="fas fa-pencil-alt icon-text"></i> LEARN</button>
+			<button id="share" class="activityselect" disabled onclick="startlisten()"><i
+					class="fas fa-volume-up icon-text"></i> LISTEN & WRITE</button>
+		</div>
+		<div id="listenselect" class="selectsection collapse">
+			<h2 id="listenhead" class="notyet"><i class='fas fa-headphones'></i> LISTEN TO YOUR STORY</h2>
+			<button id="read1" class="readstory" disabled onclick="speakStory(0)"><i
+					class="fas fa-volume-up fa-fw icon-text"></i> IDEA 1</button>
+			<button id="read2" class="readstory" disabled onclick="speakStory(1)"><i
+					class="fas fa-volume-up fa-fw icon-text"></i> IDEA 2</button>
+			<button id="read3" class="readstory" disabled onclick="speakStory(2)"><i
+					class="fas fa-volume-up fa-fw icon-text"></i> IDEA 3</button>
+			<button id="read4" class="readstory" disabled onclick="speakStory(3)"><i
+					class="fas fa-volume-up fa-fw icon-text"></i> IDEA 4</button>
+			<button id="read5" class="readstory" disabled onclick="speakStory(4)"><i
+					class="fas fa-volume-up fa-fw icon-text"></i> IDEA 5</button>
+			<button id="readall" class="readstory" disabled onclick="speakAllStory()"><i
+					class="fas fa-volume-up fa-fw icon-text"></i> ALL</button>
+			<button id="stopread" class="readstory" disabled onclick="stopReadingStory()"><i
+					class="fas fa-square fa-fw icon-text"></i> STOP</button>
+		</div>
 	</div>
-</body></html>
+</body>
+
+</html>

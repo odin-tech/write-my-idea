@@ -139,16 +139,16 @@ function startdraw() {
 	var pick = document.getElementById("storypick");
 	var story = localStorage.getArray(pick.value);
 	var tab = window.open();
-	tab.document.write("<!DOCTYPE html><html><head><title>" + pick.value + " by " + story[5] + " - Write My Idea!</title><link rel='icon' href='favicon.png'><link href='https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Schoolbell&display=swap' rel='stylesheet'</head>");
-	tab.document.write("<body style='font-family: Barlow Semi Condensed'>");
+	tab.document.write("<!DOCTYPE html><html><head><title>" + pick.value + " by " + story[5] + " - Write My Idea!</title><link rel='icon' href='favicon.png'><link href='https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Mali&display=swap' rel='stylesheet'</head>");
+	tab.document.write("<body style='font-family: Barlow Semi Condensed'; font-weight: normal;>");
 	tab.document.write("<h1>" + pick.value + "</h1>");
 	tab.document.write("<h3> by " + story[5] + "</h3>");
 	tab.document.write("<div style='border: 2px black solid; width: 90vw; height: 50vh;'></div>");
-	tab.document.write("<h2 style='font-family: Schoolbell;'>" + story[0] + "</h2>");
-	tab.document.write("<h2 style='font-family: Schoolbell;'>" + story[1] + "</h2>");
-	tab.document.write("<h2 style='font-family: Schoolbell;'>" + story[2] + "</h2>");
-	tab.document.write("<h2 style='font-family: Schoolbell;'>" + story[3] + "</h2>");
-	tab.document.write("<h2 style='font-family: Schoolbell;'>" + story[4] + "</h2>");
+	tab.document.write("<h2 style='font-family: Mali;'>" + story[0] + "</h2>");
+	tab.document.write("<h2 style='font-family: Mali;'>" + story[1] + "</h2>");
+	tab.document.write("<h2 style='font-family: Mali;'>" + story[2] + "</h2>");
+	tab.document.write("<h2 style='font-family: Mali;'>" + story[3] + "</h2>");
+	tab.document.write("<h2 style='font-family: Mali;'>" + story[4] + "</h2>");
 	tab.document.write("</body></html>");
 }
 
@@ -156,7 +156,7 @@ function startlearn() {
 	var pick = document.getElementById("storypick");
 	var story = localStorage.getArray(pick.value);
 	var tab = window.open();
-	tab.document.write("<!DOCTYPE html><html><head><title>" + pick.value + " by " + story[5] + " - Write My Idea!</title><link rel='icon' href='favicon.png'><link href='https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Schoolbell&display=swap' rel='stylesheet'></head>");
+	tab.document.write("<!DOCTYPE html><html><head><title>" + pick.value + " by " + story[5] + " - Write My Idea!</title><link rel='icon' href='favicon.png'><link href='https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Mali&display=swap' rel='stylesheet'></head>");
 	tab.document.write("<body style='font-family: Barlow Semi Condensed'>");
 	tab.document.write("<h1>" + pick.value + "</h1>");
 	tab.document.write("<h3> by " + story[5] + "</h3>");
@@ -165,27 +165,27 @@ function startlearn() {
 	tab.document.write("<hr>");
 	tab.document.write("<br><br><br><br>");
 	tab.document.write("<hr>");
-	tab.document.write("<h2 style='font-family: Schoolbell;'>" + story[0] + "</h2>");
+	tab.document.write("<h2 style='font-family: Mali;'>" + story[0] + "</h2>");
 	tab.document.write("<br><br><br>");
 	tab.document.write("<hr>");
 	tab.document.write("<br><br><br><br>");
 	tab.document.write("<hr>");
-	tab.document.write("<h2 style='font-family: Schoolbell;'>" + story[1] + "</h2>");
+	tab.document.write("<h2 style='font-family: Mali;'>" + story[1] + "</h2>");
 	tab.document.write("<br><br><br>");
 	tab.document.write("<hr>");
 	tab.document.write("<br><br><br><br>");
 	tab.document.write("<hr>");
-	tab.document.write("<h2 style='font-family: Schoolbell;'>" + story[2] + "</h2>");
+	tab.document.write("<h2 style='font-family: Mali;'>" + story[2] + "</h2>");
 	tab.document.write("<br><br><br>");
 	tab.document.write("<hr>");
 	tab.document.write("<br><br><br><br>");
 	tab.document.write("<hr>");
-	tab.document.write("<h2 style='font-family: Schoolbell;'>" + story[3] + "</h2>");
+	tab.document.write("<h2 style='font-family: Mali;'>" + story[3] + "</h2>");
 	tab.document.write("<br><br><br>");
 	tab.document.write("<hr>");
 	tab.document.write("<br><br><br><br>");
 	tab.document.write("<hr>");
-	tab.document.write("<h2 style='font-family: Schoolbell;'>" + story[4] + "</h2>");
+	tab.document.write("<h2 style='font-family: Mali;'>" + story[4] + "</h2>");
 	tab.document.write("</body></html>");
 }
 
@@ -193,33 +193,33 @@ function startlisten() {
 	var pick = document.getElementById("storypick");
 	var story = localStorage.getArray(pick.value);
 	var tab = window.open();
-	tab.document.write("<!DOCTYPE html><html><head><title>" + pick.value + " by " + story[5] + " - Write My Idea!</title><link rel='icon' href='favicon.png'><link href='https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Schoolbell&display=swap' rel='stylesheet'></head>");
+	tab.document.write("<!DOCTYPE html><html><head><title>" + pick.value + " by " + story[5] + " - Write My Idea!</title><link rel='icon' href='favicon.png'><link href='https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Mali&display=swap' rel='stylesheet'></head>");
 	tab.document.write("<body style='font-family: Barlow Semi Condensed'>");
 	tab.document.write("<h1>" + pick.value + "</h1>");
 	tab.document.write("<h3> by " + story[5] + "</h3>");
 	tab.document.write("<div style='border: 2px black solid; width: 90vw; height: 35vh;'></div>");
 	tab.document.write("<br><br><br><br>");
-	tab.document.write("<em style='color: #eb0000; font-family: Schoolbell;'>Idea 1 (Red)</em>");
+	tab.document.write("<em style='color: #eb0000; font-family: Mali;'>Idea 1 (Red)</em>");
 	tab.document.write("<hr style='border-color: #eb0000;'>");
 	tab.document.write("<br><br><br>");
 	tab.document.write("<hr style='border-color: #eb0000;'>");
 	tab.document.write("<br><br><br>");
-	tab.document.write("<em style='color: #f59f00; font-family: Schoolbell;'>Idea 2 (Yellow)</em>");
+	tab.document.write("<em style='color: #f59f00; font-family: Mali;'>Idea 2 (Yellow)</em>");
 	tab.document.write("<hr style='border-color: #f59f00;'>");
 	tab.document.write("<br><br><br>");
 	tab.document.write("<hr style='border-color: #f59f00;'>");
 	tab.document.write("<br><br><br>");
-	tab.document.write("<em style='color: #00b70e; font-family: Schoolbell;'>Idea 3 (Green)</em>");
+	tab.document.write("<em style='color: #00b70e; font-family: Mali;'>Idea 3 (Green)</em>");
 	tab.document.write("<hr style='border-color: #00b70e;'>");
 	tab.document.write("<br><br><br>");
 	tab.document.write("<hr style='border-color: #00b70e;'>");
 	tab.document.write("<br><br><br>");
-	tab.document.write("<em style='color: #00b3de; font-family: Schoolbell;'>Idea 4 (Sky Blue)</em>");
+	tab.document.write("<em style='color: #00b3de; font-family: Mali;'>Idea 4 (Sky Blue)</em>");
 	tab.document.write("<hr style='border-color: #00b3de;'>");
 	tab.document.write("<br><br><br>");
 	tab.document.write("<hr style='border-color: #00b3de;'>");
 	tab.document.write("<br><br><br>");
-	tab.document.write("<em style='color: #3857ff; font-family: Schoolbell;'>Idea 5 (Dark Blue)</em>");
+	tab.document.write("<em style='color: #3857ff; font-family: Mali;'>Idea 5 (Dark Blue)</em>");
 	tab.document.write("<hr style='border-color: #3857ff;'>");
 	tab.document.write("<br><br><br>");
 	tab.document.write("<hr style='border-color: #3857ff;'>");
@@ -259,8 +259,11 @@ function loop() {
 				document.getElementById("startdraw").disabled = false;
 				document.getElementById("share").disabled = false;
 				document.getElementById("delete").disabled = false;
-				document.getElementById("activityhead").className = "";
-				document.getElementById("readhead").className = "";
+				document.getElementById("storyhead").className = "";
+				document.getElementById("activityhead").className = "highlight";
+				document.getElementById("listenhead").className = "highlight";
+				document.getElementById("activityselect").className = "selectsection";
+				document.getElementById("listenselect").className = "selectsection";
 				document.getElementById("edit").disabled = false;
 				if (synth.speaking == true) {
 					document.getElementById("stopread").disabled = false;
@@ -294,8 +297,11 @@ function loop() {
 				document.getElementById("stopread").disabled = true;
 				document.getElementById("delete").disabled = true;
 				document.getElementById("edit").disabled = true;
+				document.getElementById("storyhead").className = "highlight";
 				document.getElementById("activityhead").className = "notyet";
-				document.getElementById("readhead").className = "notyet";
+				document.getElementById("listenhead").className = "notyet";
+				document.getElementById("activityselect").className = "selectsection collapse";
+				document.getElementById("listenselect").className = "selectsection collapse";
 			}
 			if (localStorage.auth != undefined) {
 				//do nothing
