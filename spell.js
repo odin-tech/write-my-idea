@@ -1,10 +1,12 @@
 var story = [];
 var words = [];
+var acceptedwords = [];
 var wordnum = 1;
 var word = "";
 var speechVoice;
 var synth = window.speechSynthesis;
 var jumbleCorrect = false;
+var difficulty = -1;
 
 // HELPER FUNCTIONS //
 
@@ -100,7 +102,7 @@ function exitJumble() {
 }
 
 function setButtons(selectedword) {
-	if (wordnum > 10) {
+	if (wordnum > 5) {
 		document.getElementById('successscreen').className = "";
 		setTimeout(function () {
 			window.location.assign("open.html");
@@ -160,9 +162,9 @@ function continueJumble() {
 	if (jumbleCorrect) {
 		document.getElementById('resultnote').className = "";
 		wordnum = wordnum + 1;
-		word = words[Math.floor(Math.random() * words.length)];
+		word = acceptedwords[Math.floor(Math.random() * acceptedwords.length)];
 		setButtons(word);
-		document.getElementById('ideacounter').innerHTML = "WORD " + wordnum + "/10";
+		document.getElementById('ideacounter').innerHTML = "WORD " + wordnum + "/5";
 		textbox.value = "";
 	} else {
 		document.getElementById('resultnote').className = "";
@@ -177,6 +179,52 @@ function readidea() {
 	} else {
 		SpeakText(word);
 	}
+}
+
+function acceptWordsWithLetters(min, max) {
+	acceptedwords = [];
+	for (word in words) {
+		if ((words[word].length >= min) && (words[word].length <= max)) {
+			acceptedwords.push(words[word]);
+		}
+	}
+}
+
+function setMode(mode) {
+	difficulty = mode;
+	switch(difficulty) {
+		case 0:
+			acceptedwords = words; //Accept all words, continue.
+			console.log("Random selected");
+			console.log(acceptedwords);
+			break;
+		case 1:
+			acceptWordsWithLetters(1, 4);
+			console.log("Beginning Sounds selected");
+			console.log(acceptedwords);
+			break;
+		case 2:
+			acceptWordsWithLetters(1, 4);
+			console.log("Easy selected");
+			console.log(acceptedwords);
+			break;
+		case 3:
+			acceptWordsWithLetters(5, 9);
+			console.log("Medium selected");
+			console.log(acceptedwords);
+			break;
+		case 4:
+			acceptWordsWithLetters(10, Infinity);
+			console.log("Hard selected");
+			console.log(acceptedwords);
+			break;
+		default:
+			acceptedwords = words; //Invalid option? Screw it, accept them all!
+			break;
+	}
+	word = acceptedwords[Math.floor(Math.random() * acceptedwords.length)];
+		setButtons(word);
+	document.getElementById('modescreen').className = "modedone";
 }
 
 // SETUP FUNCTION //
@@ -195,7 +243,7 @@ function init() {
 			}, 3000);
 		} else {
 			story = localStorage.getArray(sessionStorage.getItem("spell"));
-			sessionStorage.removeItem("spell"); //Remove Jumble key from storage
+			sessionStorage.removeItem("spell"); //Remove Jumble key from storage 
 
 			//Split the story into it's words
 			for (var idea in story) {
@@ -203,13 +251,11 @@ function init() {
 					words.push(story[idea].split(" ")[i]);
 				}
 			}
-			word = words[Math.floor(Math.random() * words.length)];
 			setTimeout(function () {
 				var loadtext = document.getElementById('loadtext');
 				loadtext.innerHTML = "Generating words...";
 				setTimeout(function () {
 					document.getElementById('loadingscreen').className = "loadnormal loaddone";
-					setButtons(word);
 				}, 1000);
 			}, 1000);
 			PopulateVoiceList();

@@ -14,7 +14,7 @@
 	<div class="navbar">
 		<button id="quit" onclick="exitJumble();" class="navitem danger navleft"><i
 				class="fas fa-sign-out-alt fa-flip-horizontal"></i> EXIT</button>
-		<span class="navitem navright" id="ideacounter">WORD 1/10</span>
+		<span class="navitem navright" id="ideacounter">WORD 1/5</span>
 	</div>
 	<div id="loadingscreen" class="loadnormal">
 		<p id="loadiconcont"><i id="loadicon" class="fas fa-cog fa-spin fa-2x"></i></p>
@@ -24,6 +24,51 @@
 		<p id="loadtext" class="italic">
 			Getting story...
 		</p>
+	</div>
+	<div id="modescreen" class="">
+		<p id=modeiconcont><i id="modeicon" class="fas fa-chart-line fa-2x"></i></p>
+		<p class="bold" id="modetitle">
+			SELECT MODE
+		</p>
+		<table id="modetable">
+			<tr>
+				<td>
+					<button id="mode-random" class="modebutton" onclick="setMode(0);">
+						<p><i class="fas fa-dice"></i></p>
+						<p class="modetext">RANDOM</p>
+						<p class="modeitalic">All words</p>
+					</button>
+				</td>
+				<td>
+					<button id="mode-begin" class="modebutton" disabled onclick="setMode(1);">
+						<p><i class="fas fa-thermometer-quarter"></i></p>
+						<p class="modetext">BEGINNING SOUNDS</p>
+						<p class="modeitalic">COMING SOON</p>
+					</button>
+				</td>
+				<td>
+					<button id="mode-easy" class="modebutton" onclick="setMode(2);">
+						<p><i class="fas fa-thermometer-half"></i></p>
+						<p class="modetext">EASY</p>
+						<p class="modeitalic">1-4 letters</p>
+					</button>
+				</td>
+				<td>
+					<button id="mode-med" class="modebutton" onclick="setMode(3);">
+						<p><i class="fas fa-thermometer-three-quarters"></i></p>
+						<p class="modetext">MEDIUM</p>
+						<p class="modeitalic">5-9 letters</p>
+					</button>
+				</td>
+				<td>
+					<button id="mode-hard" class="modebutton" onclick="setMode(4);">
+						<p><i class="fas fa-thermometer-full"></i></p>
+						<p class="modetext">HARD</p>
+						<p class="modeitalic">10+ letters</p>
+					</button>
+				</td>
+			</tr>
+		</table>
 	</div>
 	<div id="successscreen" class="successnormal">
 		<p><i class="fas fa-check fa-2x"></i></p>
@@ -45,7 +90,7 @@
 		<button id="nextjumble" onclick="checkInput()" class="sidebtn nextside"><i class="fas fa-arrow-right"></i></button><br>
 			<i id="jumblearrow" class="fas fa-arrow-up"></i>
 			<div id="wordbank">
-				<!-- Word buttons will be added here when setButtons() is called-->
+				<!-- Word buttons will be added here when setButtons() is called -->
 			</div>
 		</div>
 	</div>

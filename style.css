@@ -74,7 +74,7 @@ button {
 
 .navitem {
 	font-size: 23px;
-	background-color: transparent;
+	background-color: rgba(0, 128, 255, 0.09);
 	font-weight: normal;
 	color: #0080ff;
 	color: #0080ff;
@@ -564,6 +564,7 @@ hr {
 	margin-top: 0px;
 	height: 50px;
 	background-color: #0080ff;
+	box-shadow: grey 0px 2px 5px;
 }
 
 .used {
@@ -664,6 +665,91 @@ hr {
 .loaderror {
 	background: #c20000;
 	color: white;
+}
+
+#modescreen {
+	position: fixed;
+	top: 0;
+	left: 0;
+	height: 100vh;
+	width: 100vw;
+	z-index: 95;
+	text-align: center;
+	padding-top: 20vh;
+	transition: ease 0.5s;
+	background: rgb(255, 166, 0);
+	color: white;
+}
+
+#modetable {
+	width: 100vw;
+	height: 50vh;
+	border: none;
+	border-collapse: collapse;
+}
+
+.modebutton {
+	color: white;
+	font-size: 35px;
+	width: 18.5vw;
+	height: 300px;
+	border-radius: 10px;
+	box-shadow: rgb(63, 63, 63) 0px 2px 5px;
+}
+
+.modebutton:disabled {
+	color: white;
+	background-color: rgb(170, 170, 170);
+	font-size: 35px;
+	width: 18.5vw;
+	height: 300px;
+	border-radius: 10px;
+	box-shadow: none;
+	margin-top: 2px;
+}
+
+.modedone {
+	margin-top: 100vh;
+}
+
+/*.modebutton:hover {
+	color: white;
+	font-size: 35px;
+	width: 18.5vw;
+	border-radius: 10px;
+	box-shadow: rgb(63, 63, 63) 0px 10px 20px;
+	margin-bottom: 8px;
+}
+Not supported by touchscreen devices - save for later
+*/
+
+.modetext {
+	font-weight: bold;
+}
+
+.modeitalic {
+	font-size: 22px;
+	font-style: italic;
+}
+
+#mode-random:not(:disabled) {
+	background-color: #00b3de;
+}
+
+#mode-begin:not(:disabled) {
+	background-color: #8d00de;
+}
+
+#mode-easy:not(:disabled) {
+	background-color: #0c9400;
+}
+
+#mode-med:not(:disabled) {
+	background-color: #de6b00;
+}
+
+#mode-hard:not(:disabled) {
+	background-color: #af0000;
 }
 
 .italic {

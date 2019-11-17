@@ -218,6 +218,11 @@ function loop() {
 			title = sessionStorage.getItem("edit");
 			author = ideas[5];
 		}
+		document.getElementById("ideabox").addEventListener("keyup", function(event) {
+			if (event.key === "Enter") {
+				saveInput();
+			}
+		});
 	}, 500);
 	setInterval(function () {
 		if (document.getElementById("ideabox").value != "") {
