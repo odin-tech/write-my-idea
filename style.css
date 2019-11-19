@@ -850,11 +850,15 @@ Not supported by touchscreen devices - save for later
 }
 
 .selectsection {
-	height: 150px;
+	height: 300px;
 	width: 100vw;
 	transition: all 0.3s;
 	overflow: hidden;
 	box-shadow: grey 0px 5px 6px;
+}
+
+.otherselectsection {
+	height: 180px;
 }
 
 .collapse {
@@ -865,4 +869,63 @@ Not supported by touchscreen devices - save for later
 .highlight {
 	color: #0080ff;
 	font-size: 28px;
+}
+
+#previousstory {
+	position: absolute;
+	top: 230px;
+	left: 20vw;
+	font-size: 40px;
+	border-radius: 10px;
+	padding: 0px 8px 0px 8px;
+	margin: 0;
+}
+
+#previousstory:not(:disabled) {
+	color: #009b00;
+	background-color: rgba(0, 155, 0, 0.09);
+}
+
+#previousstory:disabled {
+	transform: scale(0.75);
+	color: #c7c7c7;
+	cursor: not-allowed;
+}
+
+#nextstory {
+	position: absolute;
+	top: 230px;
+	right: 20vw;
+	font-size: 40px;
+	border-radius: 10px;
+	padding: 0px 8px 0px 8px;
+	margin: 0;
+}
+
+#nextstory:not(:disabled) {
+	color: #009b00;
+	background-color: rgba(0, 155, 0, 0.09);
+}
+
+#nextstory:disabled {
+	transform: scale(0.75);
+	color: #c7c7c7;
+	cursor: not-allowed;
+}
+
+#storycard {
+	position: absolute;
+	margin-left: 25vw;
+	margin-right: 25vw;
+	width: 50vw;
+	height: 25vh;
+	box-shadow: grey 0px 2px 6px;
+	margin-bottom: 5px;
+	text-align: center;
+	font-family: "Mali";
+	transition: all 0.5s;
+}
+
+#storytitle {
+	font-size: 22px;
 }

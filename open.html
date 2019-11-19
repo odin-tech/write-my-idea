@@ -23,10 +23,14 @@
 	<div class="navbody open">
 		<div id="selectstory" class="selectsection">
 			<h2 id="storyhead" class="highlight"><i class="fas fa-book-open"></i> WHICH STORY?</h2>
-			<h2><select id="storypick">
-					<option value="">LOADING...</option>
-				</select></h2>
-			<p id="previewstory">Loading...</p>
+			<button id="previousstory" onclick="changeStory(-1)" class="storyside" disabled><i class="fas fa-arrow-left"></i></button>
+			<button id="nextstory" onclick="changeStory(1)" class="storyside"><i class="fas fa-arrow-right"></i></button>
+			<div id="storycard" style="transform: rotateY(-360deg);">
+				<div id="storycontent">
+				<h3 id="storytitle">LOADING...</h3>
+				<p id="previewstory">Loading...</p>
+				</div>
+			</div>
 		</div>
 		<div id="activityselect" class="selectsection collapse">
 			<h2 id="activityhead" class="notyet"><i class='fas fa-gamepad'></i> WHICH ACTIVITY?</h2>

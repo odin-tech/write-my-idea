@@ -1,5 +1,7 @@
 var ideaNum = 1;
 var ideas = ["", "", "", "", ""];
+var stories = [];
+var storyindex = -1;
 var synth = window.speechSynthesis;
 var speechVoice;
 
@@ -66,10 +68,8 @@ function SearchForString(str, items) {
 // NORMAL FUNCTIONS //
 
 function confirmStoryDelete() {
-	var pick = document.getElementById("storypick");
-	var del = confirm("Are you sure you want to delete the story '" + pick.value + "' by " + localStorage.getArray(pick.value)[5] + "? It'll be gone forever!\n\nTap OK to delete. Tap Cancel to go back.");
-	if (del) {
-		localStorage.deleteArray(pick.value);
+	if (confirm("Are you sure you want to delete the story '" + localStorage.key(storyindex) + "' by " + localStorage.getArray(localStorage.key(storyindex))[5] + "? It'll be gone forever!\n\nTap OK to delete. Tap Cancel to go back.")) {
+		localStorage.deleteArray(localStorage.key(storyindex));
 		window.location.reload();
 	} else {
 		//Do nothing.
@@ -77,14 +77,12 @@ function confirmStoryDelete() {
 }
 
 function speakStory(part) {
-	var pick = document.getElementById("storypick");
-	var selected = localStorage.getArray(pick.value);
+	var selected = localStorage.getArray(localStorage.key(storyindex));
 	SpeakText(selected[part]);
 }
 
 function speakAllStory() {
-	var pick = document.getElementById("storypick");
-	var selected = localStorage.getArray(pick.value);
+	var selected = localStorage.getArray(localStorage.key(storyindex));
 	SpeakText(selected[0]);
 	SpeakText(selected[1]);
 	SpeakText(selected[2]);
@@ -126,22 +124,21 @@ function SpeakText(input) {
 // ACTIVITY FUNCTIONS //
 
 function startjumble() {
-	sessionStorage.setItem("jumble", document.getElementById("storypick").value); //Assign Jumble ID.
+	sessionStorage.setItem("jumble", stories[storyindex]); //Assign Jumble ID.
 	window.location.assign("jumble.html"); //Redirect to Jumble page
 }
 
 function startspell() {
-	sessionStorage.setItem("spell", document.getElementById("storypick").value); //Assign Spell ID.
+	sessionStorage.setItem("spell", stories[storyindex]); //Assign Spell ID.
 	window.location.assign("spell.html"); //Redirect to Spell page
 }
 
 function startdraw() {
-	var pick = document.getElementById("storypick");
-	var story = localStorage.getArray(pick.value);
+	var story = localStorage.getArray(stories[storyindex]);
 	var tab = window.open();
-	tab.document.write("<!DOCTYPE html><html><head><title>" + pick.value + " by " + story[5] + " - Write My Idea!</title><link rel='icon' href='favicon.png'><link href='https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Mali&display=swap' rel='stylesheet'</head>");
+	tab.document.write("<!DOCTYPE html><html><head><title>" + stories[storyindex] + " by " + story[5] + " - Write My Idea!</title><link rel='icon' href='favicon.png'><link href='https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Mali&display=swap' rel='stylesheet'</head>");
 	tab.document.write("<body style='font-family: Barlow Semi Condensed'; font-weight: normal;>");
-	tab.document.write("<h1>" + pick.value + "</h1>");
+	tab.document.write("<h1>" + localStorage.key(storyindex) + "</h1>");
 	tab.document.write("<h3> by " + story[5] + "</h3>");
 	tab.document.write("<div style='border: 2px black solid; width: 90vw; height: 50vh;'></div>");
 	tab.document.write("<h2 style='font-family: Mali;'>" + story[0] + "</h2>");
@@ -153,12 +150,11 @@ function startdraw() {
 }
 
 function startlearn() {
-	var pick = document.getElementById("storypick");
-	var story = localStorage.getArray(pick.value);
+	var story = localStorage.getArray(stories[storyindex]);
 	var tab = window.open();
-	tab.document.write("<!DOCTYPE html><html><head><title>" + pick.value + " by " + story[5] + " - Write My Idea!</title><link rel='icon' href='favicon.png'><link href='https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Mali&display=swap' rel='stylesheet'></head>");
+	tab.document.write("<!DOCTYPE html><html><head><title>" + stories[storyindex] + " by " + story[5] + " - Write My Idea!</title><link rel='icon' href='favicon.png'><link href='https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Mali&display=swap' rel='stylesheet'></head>");
 	tab.document.write("<body style='font-family: Barlow Semi Condensed'>");
-	tab.document.write("<h1>" + pick.value + "</h1>");
+	tab.document.write("<h1>" + stories[storyIndex] + "</h1>");
 	tab.document.write("<h3> by " + story[5] + "</h3>");
 	tab.document.write("<div style='border: 2px black solid; width: 90vw; height: 35vh;'></div>");
 	tab.document.write("<br><br><br><br>");
@@ -190,12 +186,11 @@ function startlearn() {
 }
 
 function startlisten() {
-	var pick = document.getElementById("storypick");
-	var story = localStorage.getArray(pick.value);
+	var story = localStorage.getArray(stories[storyindex]);
 	var tab = window.open();
-	tab.document.write("<!DOCTYPE html><html><head><title>" + pick.value + " by " + story[5] + " - Write My Idea!</title><link rel='icon' href='favicon.png'><link href='https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Mali&display=swap' rel='stylesheet'></head>");
+	tab.document.write("<!DOCTYPE html><html><head><title>" + stories[storyindex] + " by " + story[5] + " - Write My Idea!</title><link rel='icon' href='favicon.png'><link href='https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Mali&display=swap' rel='stylesheet'></head>");
 	tab.document.write("<body style='font-family: Barlow Semi Condensed'>");
-	tab.document.write("<h1>" + pick.value + "</h1>");
+	tab.document.write("<h1>" + stories[storyIndex] + "</h1>");
 	tab.document.write("<h3> by " + story[5] + "</h3>");
 	tab.document.write("<div style='border: 2px black solid; width: 90vw; height: 35vh;'></div>");
 	tab.document.write("<br><br><br><br>");
@@ -226,33 +221,64 @@ function startlisten() {
 	tab.document.write("</body></html>");
 }
 
+// OTHER FUNCTIONS //
+
+function changeStory(diff) {
+	if (diff == 1) {
+		storyindex++;
+	} else if (diff == -1) {
+		storyindex--;
+	} else {
+		//do nothing
+	}
+	console.log("Index: " + storyindex + "/" + (stories.length - 1) + " Key: " + stories[storyindex]);
+	if (storyindex == stories.length - 1) {
+		document.getElementById('nextstory').disabled = true;
+	} else {
+		document.getElementById('nextstory').disabled = false;
+	}
+	if (storyindex == -1) {
+		document.getElementById('previousstory').disabled = true;
+	} else {
+		document.getElementById('previousstory').disabled = false;
+	}
+	document.getElementById('storycard').style = "transform: rotateY(" + ((storyindex * 180)) + "deg);";
+	setTimeout(function () {
+		document.getElementById('storycontent').style = "transform: rotateY(" + (storyindex * 180) + "deg);";
+		var preview = "";
+			var title = "";
+			if (storyindex == -1) {
+				title = "NO STORY SELECTED";
+				preview = "Please select a story by using the <i class='fas fa-arrow-left'></i> and <i class='fas fa-arrow-right'></i> buttons.<br>";
+			} else {
+				story = localStorage.getArray(stories[storyindex]);
+				title = stories[storyindex] + " (by " + story[5] + ")";
+				preview = "";
+				preview = story[0] + " " + story[1] + " " + story[2] + " " + story[3] + " " + story[4] + "\n";
+			}
+			document.getElementById('storytitle').innerHTML = title;
+			document.getElementById("previewstory").innerHTML = preview;
+	}, 200);
+}
+
 // LOOP & SETUP //
 
 function loop() {
 	//Execute once:
 	setTimeout(function () {
 		sessionStorage.removeItem("jumble");
-		var pick = document.getElementById("storypick");
-		pick.innerHTML = "<option value=''>CHOOSE...</option>";
 		for (var i = 0, len = localStorage.length; i < len; i++) { //Load list of stories.
 			if (localStorage.key(i) == "auth") {
 				//skip this one!
 			} else {
-				pick.innerHTML = pick.innerHTML + "<option value='" + localStorage.key(i) + "'>" + localStorage.key(i) + " (by " + localStorage.getArray(localStorage.key(i))[5] + ")</option>";
+				stories.push(localStorage.key(i));
 			}
 		}
+		document.getElementById('storytitle').innerHTML = "NO STORY SELECTED";
+		document.getElementById('previewstory').innerHTML = "Please select a story by using the <i class='fas fa-arrow-left'></i> and <i class='fas fa-arrow-right'></i> buttons.<br>";
 		PopulateVoiceList();
 		setInterval(function () {
-			var story = localStorage.getArray(document.getElementById("storypick").value);
-			var preview = "";
-			if (document.getElementById("storypick").value == "") {
-				preview = "Please select a story above.<br>";
-			} else {
-				preview = "";
-				preview = story[0] + " " + story[1] + " " + story[2] + " " + story[3] + " " + story[4] + "\n";
-			}
-			document.getElementById("previewstory").innerHTML = preview;
-			if (document.getElementById("storypick").value != "") {
+			if (storyindex != -1) {
 				document.getElementById("startjumble").disabled = false;
 				document.getElementById("startspell").disabled = false;
 				document.getElementById("startwrite").disabled = false;
@@ -262,8 +288,8 @@ function loop() {
 				document.getElementById("storyhead").className = "";
 				document.getElementById("activityhead").className = "highlight";
 				document.getElementById("listenhead").className = "highlight";
-				document.getElementById("activityselect").className = "selectsection";
-				document.getElementById("listenselect").className = "selectsection";
+				document.getElementById("activityselect").className = "selectsection otherselectsection";
+				document.getElementById("listenselect").className = "selectsection otherselectsection";
 				document.getElementById("edit").disabled = false;
 				if (synth.speaking == true) {
 					document.getElementById("stopread").disabled = false;
@@ -300,8 +326,8 @@ function loop() {
 				document.getElementById("storyhead").className = "highlight";
 				document.getElementById("activityhead").className = "notyet";
 				document.getElementById("listenhead").className = "notyet";
-				document.getElementById("activityselect").className = "selectsection collapse";
-				document.getElementById("listenselect").className = "selectsection collapse";
+				document.getElementById("activityselect").className = "selectsection otherselectsection collapse";
+				document.getElementById("listenselect").className = "selectsection otherselectsection collapse";
 			}
 			if (localStorage.auth != undefined) {
 				//do nothing
