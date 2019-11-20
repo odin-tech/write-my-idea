@@ -274,6 +274,13 @@ function loop() {
 				stories.push(localStorage.key(i));
 			}
 		}
+		window.addEventListener("keyup", function(event) {
+			if (event.key === "ArrowLeft") {
+				document.getElementById('previousstory').click();
+			} else if (event.key === "ArrowRight") {
+				document.getElementById('nextstory').click();
+			}
+		}); //Listen for left & right arrow keys
 		document.getElementById('storytitle').innerHTML = "NO STORY SELECTED";
 		document.getElementById('previewstory').innerHTML = "Please select a story by using the <i class='fas fa-arrow-left'></i> and <i class='fas fa-arrow-right'></i> buttons.<br>";
 		PopulateVoiceList();
@@ -335,8 +342,8 @@ function loop() {
 				window.location.replace("index.html");
 			}
 		}, 100);
-	}, 500);
+	}, 1000);
 
 }
 
-window.onload = loop();
+window.on  = loop();

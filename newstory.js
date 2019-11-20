@@ -219,7 +219,7 @@ function loop() {
 			author = ideas[5];
 		}
 		document.getElementById("ideabox").addEventListener("keyup", function(event) {
-			if (event.key === "Enter") {
+			if (event.key === "Enter" && !SearchForString(document.getElementById("ideabox").value.toLowerCase(), banwords)) {
 				saveInput();
 			}
 		});
