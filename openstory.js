@@ -68,8 +68,8 @@ function SearchForString(str, items) {
 // NORMAL FUNCTIONS //
 
 function confirmStoryDelete() {
-	if (confirm("Are you sure you want to delete the story '" + localStorage.key(storyindex) + "' by " + localStorage.getArray(localStorage.key(storyindex))[5] + "? It'll be gone forever!\n\nTap OK to delete. Tap Cancel to go back.")) {
-		localStorage.deleteArray(localStorage.key(storyindex));
+	if (confirm("Are you sure you want to delete the story '" + stories[storyindex] + "' by " + localStorage.getArray(stories[storyindex])[5] + "? It'll be gone forever!\n\nTap OK to delete. Tap Cancel to go back.")) {
+		localStorage.deleteArray(stories[storyindex]);
 		window.location.reload();
 	} else {
 		//Do nothing.
@@ -77,12 +77,12 @@ function confirmStoryDelete() {
 }
 
 function speakStory(part) {
-	var selected = localStorage.getArray(localStorage.key(storyindex));
+	var selected = localStorage.getArray(stories[storyindex]);
 	SpeakText(selected[part]);
 }
 
 function speakAllStory() {
-	var selected = localStorage.getArray(localStorage.key(storyindex));
+	var selected = localStorage.getArray(stories[storyindex]);
 	SpeakText(selected[0]);
 	SpeakText(selected[1]);
 	SpeakText(selected[2]);
@@ -95,7 +95,7 @@ function stopReadingStory() {
 }
 
 function editStory() {
-	sessionStorage.setItem("edit", document.getElementById("storypick").value);
+	sessionStorage.setItem("edit", stories[storyindex]);
 	window.location.assign("new.html");
 }
 
@@ -138,7 +138,7 @@ function startdraw() {
 	var tab = window.open();
 	tab.document.write("<!DOCTYPE html><html><head><title>" + stories[storyindex] + " by " + story[5] + " - Write My Idea!</title><link rel='icon' href='favicon.png'><link href='https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Mali&display=swap' rel='stylesheet'</head>");
 	tab.document.write("<body style='font-family: Barlow Semi Condensed'; font-weight: normal;>");
-	tab.document.write("<h1>" + localStorage.key(storyindex) + "</h1>");
+	tab.document.write("<h1>" + stories[storyindex] + "</h1>");
 	tab.document.write("<h3> by " + story[5] + "</h3>");
 	tab.document.write("<div style='border: 2px black solid; width: 90vw; height: 50vh;'></div>");
 	tab.document.write("<h2 style='font-family: Mali;'>" + story[0] + "</h2>");
@@ -246,18 +246,25 @@ function changeStory(diff) {
 	setTimeout(function () {
 		document.getElementById('storycontent').style = "transform: rotateY(" + (storyindex * 180) + "deg);";
 		var preview = "";
-			var title = "";
-			if (storyindex == -1) {
-				title = "NO STORY SELECTED";
-				preview = "Please select a story by using the <i class='fas fa-arrow-left'></i> and <i class='fas fa-arrow-right'></i> buttons.<br>";
-			} else {
-				story = localStorage.getArray(stories[storyindex]);
-				title = stories[storyindex] + " (by " + story[5] + ")";
-				preview = "";
-				preview = story[0] + " " + story[1] + " " + story[2] + " " + story[3] + " " + story[4] + "\n";
-			}
-			document.getElementById('storytitle').innerHTML = title;
-			document.getElementById("previewstory").innerHTML = preview;
+		var title = "";
+		var icon = "";
+		var iconclass = "";
+		if (storyindex == -1) {
+			iconclass = "";
+			icon = "<i class='fas fa-question-circle'></i>";
+			title = "NO STORY SELECTED";
+			preview = "Please select a story by using the <i class='fas fa-arrow-left'></i> and <i class='fas fa-arrow-right'></i> buttons.<br>";
+		} else {
+			iconclass = "hideicon";
+			story = localStorage.getArray(stories[storyindex]);
+			title = stories[storyindex] + " (by " + story[5] + ")";
+			preview = "";
+			preview = story[0] + " " + story[1] + " " + story[2] + " " + story[3] + " " + story[4] + "\n";
+		}
+		document.getElementById('storyicon').innerHTML = icon;
+		document.getElementById('storyicon').className = iconclass;
+		document.getElementById('storytitle').innerHTML = title;
+		document.getElementById("previewstory").innerHTML = preview;
 	}, 200);
 }
 
@@ -266,6 +273,7 @@ function changeStory(diff) {
 function loop() {
 	//Execute once:
 	setTimeout(function () {
+		document.getElementById('previousstory').disabled = true;
 		sessionStorage.removeItem("jumble");
 		for (var i = 0, len = localStorage.length; i < len; i++) { //Load list of stories.
 			if (localStorage.key(i) == "auth") {
@@ -274,15 +282,25 @@ function loop() {
 				stories.push(localStorage.key(i));
 			}
 		}
-		window.addEventListener("keyup", function(event) {
+		window.addEventListener("keyup", function (event) {
 			if (event.key === "ArrowLeft") {
 				document.getElementById('previousstory').click();
 			} else if (event.key === "ArrowRight") {
 				document.getElementById('nextstory').click();
 			}
 		}); //Listen for left & right arrow keys
-		document.getElementById('storytitle').innerHTML = "NO STORY SELECTED";
-		document.getElementById('previewstory').innerHTML = "Please select a story by using the <i class='fas fa-arrow-left'></i> and <i class='fas fa-arrow-right'></i> buttons.<br>";
+		if (stories.length == 0) {
+			document.getElementById('storyicon').innerHTML = "<i class='fas fa-times-circle'></i>";
+			document.getElementById('storytitle').innerHTML = "NO STORIES";
+			document.getElementById('previewstory').innerHTML = "You have no stories! Go to the menu and press NEW STORY to start.";
+			document.getElementById('nextstory').disabled = true;
+			document.getElementById('previousstory').disabled = true;
+		} else {
+			document.getElementById('storyicon').innerHTML = "<i class='fas fa-question-circle'></i>";
+			document.getElementById('storytitle').innerHTML = "NO STORY SELECTED";
+			document.getElementById('previewstory').innerHTML = "Please select a story by using the <i class='fas fa-arrow-left'></i> and <i class='fas fa-arrow-right'></i> buttons.<br>";
+		}
+
 		PopulateVoiceList();
 		setInterval(function () {
 			if (storyindex != -1) {
@@ -346,4 +364,4 @@ function loop() {
 
 }
 
-window.on  = loop();
+window.on = loop();
