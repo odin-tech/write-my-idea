@@ -154,7 +154,7 @@ function startlearn() {
 	var tab = window.open();
 	tab.document.write("<!DOCTYPE html><html><head><title>" + stories[storyindex] + " by " + story[5] + " - Write My Idea!</title><link rel='icon' href='favicon.png'><link href='https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Mali&display=swap' rel='stylesheet'></head>");
 	tab.document.write("<body style='font-family: Barlow Semi Condensed'>");
-	tab.document.write("<h1>" + stories[storyIndex] + "</h1>");
+	tab.document.write("<h1>" + stories[storyindex] + "</h1>");
 	tab.document.write("<h3> by " + story[5] + "</h3>");
 	tab.document.write("<div style='border: 2px black solid; width: 90vw; height: 35vh;'></div>");
 	tab.document.write("<br><br><br><br>");
@@ -190,7 +190,7 @@ function startlisten() {
 	var tab = window.open();
 	tab.document.write("<!DOCTYPE html><html><head><title>" + stories[storyindex] + " by " + story[5] + " - Write My Idea!</title><link rel='icon' href='favicon.png'><link href='https://fonts.googleapis.com/css?family=Barlow+Semi+Condensed:400,400i,600|Mali&display=swap' rel='stylesheet'></head>");
 	tab.document.write("<body style='font-family: Barlow Semi Condensed'>");
-	tab.document.write("<h1>" + stories[storyIndex] + "</h1>");
+	tab.document.write("<h1>" + stories[storyindex] + "</h1>");
 	tab.document.write("<h3> by " + story[5] + "</h3>");
 	tab.document.write("<div style='border: 2px black solid; width: 90vw; height: 35vh;'></div>");
 	tab.document.write("<br><br><br><br>");
